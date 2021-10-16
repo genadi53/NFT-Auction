@@ -1,0 +1,14 @@
+@use "../../styles/colors";
+
+.headerButton {
+  color: colors.$text_primary !important;
+}
+
+.searchIcon {
+  color: colors.$text_primary !important;
+}
+
+.headerInput {
+  width: 100%;
+  color: colors.$background_paper;
+}
