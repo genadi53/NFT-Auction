@@ -13,18 +13,6 @@ import Avatar from "../avatar/Avatar";
 import styles from "./Card.module.scss";
 import classNames from "classnames";
 
-const props = {
-  name: "Clock",
-  likes: 3500,
-  mediaUrl: "/images/nft.jpg",
-  user: {
-    avatarUrl: "/images/avatar.png",
-    verified: false,
-  },
-  price: "11.9",
-  currency: "ETH",
-};
-
 export default function Card({
   name,
   likes = 0,
