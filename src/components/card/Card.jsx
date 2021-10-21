@@ -44,6 +44,8 @@ export default function Card({
         <Typography variant="body1" className={classNames(styles.price)}>
           {totalPrice}
         </Typography>
+      </CardContent>
+      <CardActions>
         <Chip
           className={classNames(styles.likes)}
           variant="outlined"
@@ -52,7 +54,7 @@ export default function Card({
           label={millify(likes)}
           onClick={() => console.log("click")}
         />
-      </CardContent>
+      </CardActions>
     </MaterialCard>
   );
 }
