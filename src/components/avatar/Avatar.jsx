@@ -33,19 +33,5 @@ export default function Avatar({
         />
       ) : null}
     </div>
-    // <div
-    //   className={classNames(styles.avatar)}
-    //   style={{ width: `${size}px; height: ${size}px` }}
-    // >
-    //   <Badge
-    //     overlap="circular"
-    //     anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-    //     badgeContent={
-    //       verified ? <VerifiedIcon color="success" role="img" /> : null
-    //     }
-    //   >
-    //     <img className={classNames(styles.image)} src={url} alt="avatar" />
-    //   </Badge>
-    // </div>
   );
 }

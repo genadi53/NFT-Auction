@@ -1,23 +1,5 @@
 @use "../../styles/colors";
 
-// .avatar {
-//   position: relative;
-//   margin: 0;
-// }
-
-// .image {
-//   border-radius: 50%;
-//   width: 100%;
-//   padding: 0;
-//   object-fit: contain;
-// }
-
-// .badge {
-//   position: absolute;
-//   bottom: 0;
-//   right: 0;
-// }
-
 .avatar {
   display: block;
   position: relative;
@@ -29,8 +11,6 @@
 
 .badge {
   position: absolute;
-  // left: -70px;
-  // top: -20px;
   bottom: 0;
   right: 0;
 }

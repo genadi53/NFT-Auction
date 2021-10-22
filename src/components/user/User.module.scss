@@ -1,0 +1,32 @@
+@use "../../styles/colors";
+
+.user {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 0.6rem;
+  margin-left: 0.8rem;
+}
+
+.name {
+  margin: 0;
+  color: colors.$text_primary;
+  font-size: 1.1rem;
+  font-weight: 700;
+  font-family: "Montserrat", "Helvetica", "Arial", sans-serif;
+}
+
+.info {
+  color: colors.$success_main;
+  margin: 0;
+  line-height: 1.7;
+  font-family: "Montserrat", "Helvetica", "Arial", sans-serif;
+  font-weight: 700 !important;
+  font-size: 1rem;
+}

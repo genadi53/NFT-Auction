@@ -1,0 +1,34 @@
+@use "../../styles/colors";
+
+.card {
+}
+
+.media {
+  border-radius: 5%;
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+
+  .likes {
+    align-self: flex-end;
+    position: fixed;
+    justify-content: center;
+  }
+}
+
+.title {
+  font-weight: 700;
+}
+
+.price {
+  color: colors.$success_main; //#1bde51;
+  font-weight: 700;
+}
+
+.likes {
+  border: 2.5px solid rgba(27, 222, 81, 0.7) !important;
+  font-weight: 700;
+}
