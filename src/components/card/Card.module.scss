@@ -4,6 +4,8 @@
 }
 
 .media {
+  width: 90% !important;
+  margin: auto;
   border-radius: 5%;
 }
 
@@ -13,9 +15,8 @@
   justify-content: space-evenly;
 
   .likes {
-    align-self: flex-end;
-    position: fixed;
     justify-content: center;
+    float: right;
   }
 }
 

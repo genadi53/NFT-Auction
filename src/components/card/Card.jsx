@@ -6,6 +6,7 @@ import CardActions from "@mui/material/CardActions";
 import Chip from "@mui/material/Chip";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import Typography from "@mui/material/Typography";
+import Grid from "@mui/material/Grid";
 
 import millify from "millify";
 import Avatar from "../avatar/Avatar";
@@ -29,7 +30,7 @@ export default function Card({
       className={classNames(styles.card)}
     >
       <CardHeader
-        avatar={<Avatar url={avatarUrl} size={70} verified={verified} />}
+        avatar={<Avatar url={avatarUrl} size={55} verified={verified} />}
       ></CardHeader>
       <CardMedia
         className={classNames(styles.media)}
@@ -38,23 +39,31 @@ export default function Card({
         alt="NFT image"
       />
       <CardContent className={classNames(styles.cardContent)}>
-        <Typography variant="h5" className={classNames(styles.title)}>
-          {name}
-        </Typography>
-        <Typography variant="body1" className={classNames(styles.price)}>
-          {totalPrice}
-        </Typography>
+        <Grid container>
+          <Grid item xs={8}>
+            <Typography variant="h5" className={classNames(styles.title)}>
+              {name}
+            </Typography>
+            <Typography variant="body1" className={classNames(styles.price)}>
+              {totalPrice}
+            </Typography>
+          </Grid>
+          <Grid item xs={4}>
+            <Chip
+              className={classNames(styles.likes)}
+              variant="outlined"
+              color="success"
+              icon={<FavoriteIcon color="success" />}
+              label={millify(likes)}
+              onClick={() => console.log("click")}
+            />
+          </Grid>
+        </Grid>
       </CardContent>
-      <CardActions>
-        <Chip
-          className={classNames(styles.likes)}
-          variant="outlined"
-          color="success"
-          icon={<FavoriteIcon color="success" />}
-          label={millify(likes)}
-          onClick={() => console.log("click")}
-        />
-      </CardActions>
     </MaterialCard>
   );
 }
+
+// <CardHeader
+//   avatar={<Avatar url={avatarUrl} size={70} verified={verified} />}
+// ></CardHeader>
