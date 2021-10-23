@@ -1,0 +1,21 @@
+@use "../../styles/colors";
+
+.container {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+
+  .selectGrid {
+  }
+}
+
+.trendingTitle {
+  margin-top: 0.7rem !important;
+  margin-left: 0.3rem !important;
+}
+
+.select {
+  svg {
+    color: white !important;
+  }
+}
