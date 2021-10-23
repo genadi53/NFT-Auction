@@ -1,0 +1,44 @@
+@use "../../styles/colors";
+
+.container {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+.media {
+  border-radius: 35px;
+  padding: 0 15px;
+}
+
+.liveWrapper {
+  position: relative;
+  border-radius: 2px;
+
+  .badge {
+    border-radius: 2px;
+    background: colors.$secondary_main;
+    color: #000;
+    font-weight: 600;
+    width: 100px;
+    text-align: center;
+    position: absolute;
+    top: 15px;
+    left: 8%;
+  }
+
+  .cowntdown {
+    background: colors.$secondary_main;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    color: #000;
+    position: absolute;
+    bottom: 10px;
+    left: 5%;
+    font-weight: 600;
+    text-align: center;
+    padding: 10px;
+    z-index: 1;
+    width: 309px;
+  }
+}
