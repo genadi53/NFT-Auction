@@ -1,13 +1,16 @@
 import MaterialCard from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
-import CardMedia from "@mui/material/CardMedia";
+// import CardMedia from "@mui/material/CardMedia";
+// import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
-import CardActions from "@mui/material/CardActions";
 import Chip from "@mui/material/Chip";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
+import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 
+import Countdown from "react-countdown";
 import millify from "millify";
 import Avatar from "../avatar/Avatar";
 
@@ -21,6 +24,7 @@ export default function Card({
   user,
   price,
   currency,
+  timeLeft = 1000 * 60 * 60 * 24,
 }) {
   const { avatarUrl, verified } = user;
   const totalPrice = `~${price} ${currency}`;
@@ -32,12 +36,30 @@ export default function Card({
       <CardHeader
         avatar={<Avatar url={avatarUrl} size={55} verified={verified} />}
       ></CardHeader>
-      <CardMedia
-        className={classNames(styles.media)}
-        component="img"
-        image={mediaUrl}
-        alt="NFT image"
-      />
+      <div className={classNames(styles.cardMedia)}>
+        {timeLeft && (
+          <Button
+            className={classNames(styles.liveButton)}
+            variant="contained"
+            color="success"
+            size="small"
+            startIcon={<FiberManualRecordIcon />}
+          >
+            LIVE
+          </Button>
+        )}
+        <img
+          className={classNames(styles.media)}
+          src={mediaUrl}
+          alt="NFT image"
+        />
+        {timeLeft && (
+          <Countdown
+            className={classNames(styles.liveCountdown)}
+            date={Date.now() + timeLeft}
+          />
+        )}
+      </div>
       <CardContent className={classNames(styles.cardContent)}>
         <Grid container>
           <Grid item xs={8}>
