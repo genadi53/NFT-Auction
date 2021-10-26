@@ -3,10 +3,44 @@
 .card {
 }
 
-.media {
-  width: 90% !important;
-  margin: auto;
-  border-radius: 5%;
+.cardMedia {
+  position: relative;
+
+  .liveButton {
+    position: absolute;
+    top: 5%;
+    left: 7.5%;
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .media {
+    width: 90% !important;
+    margin: auto;
+    border-radius: 5%;
+    display: block;
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+    -webkit-background-position: center;
+    background-position: center;
+    object-fit: cover;
+  }
+
+  .liveCountdown {
+    position: absolute;
+    bottom: 0;
+    left: 5%;
+    width: 90%;
+    z-index: 1;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    background: colors.$secondary_main;
+    color: colors.$background_default;
+    text-align: center;
+    font-weight: 700;
+    padding: 10px;
+  }
 }
 
 .cardContent {
@@ -14,22 +48,19 @@
   flex-direction: column;
   justify-content: space-evenly;
 
+  .title {
+    font-weight: 700;
+  }
+
+  .price {
+    color: colors.$success_main; //#1bde51;
+    font-weight: 700;
+  }
+
   .likes {
     justify-content: center;
     float: right;
+    border: 2.5px solid rgba(27, 222, 81, 0.7) !important;
+    font-weight: 700;
   }
-}
-
-.title {
-  font-weight: 700;
-}
-
-.price {
-  color: colors.$success_main; //#1bde51;
-  font-weight: 700;
-}
-
-.likes {
-  border: 2.5px solid rgba(27, 222, 81, 0.7) !important;
-  font-weight: 700;
 }
