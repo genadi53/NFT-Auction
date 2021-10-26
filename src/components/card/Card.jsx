@@ -24,7 +24,7 @@ export default function Card({
   user,
   price,
   currency,
-  timeLeft = 1000 * 60 * 60 * 24,
+  timeLeft, //= 1000 * 60 * 60 * 24,
 }) {
   const { avatarUrl, verified } = user;
   const totalPrice = `~${price} ${currency}`;

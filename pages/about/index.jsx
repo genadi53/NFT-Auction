@@ -9,6 +9,7 @@ import Footer from "../../src/components/footer/Footer";
 import User from "../../src/components/user/User";
 import Trending from "../../src/components/trending/Trending";
 import Header from "../../src/components/header/Header";
+import Trending2 from "../../src/components/trending2/Trending";
 
 const userProps = {
   name: "Okay",
@@ -67,7 +68,10 @@ export default function About() {
   return (
     <>
       <Header />
+      <br />
       <Trending cards={trendingProps.cards} />
+      <br />
+      <Trending2 cards={trendingProps.cards} />
       <br />
       <Card {...cardProps} />
       <br />
