@@ -38,15 +38,18 @@ export default function Card({
       ></CardHeader>
       <div className={classNames(styles.cardMedia)}>
         {timeLeft && (
-          <Button
-            className={classNames(styles.badge)}
-            variant="contained"
-            color="success"
-            size="small"
-            startIcon={<FiberManualRecordIcon />}
-          >
-            LIVE
-          </Button>
+          <div className={classNames(styles.badge)}>
+            <FiberManualRecordIcon /> LIVE
+          </div>
+          // <Button
+          //   className={classNames(styles.badge)}
+          //   variant="contained"
+          //   color="success"
+          //   size="small"
+          //   startIcon={<FiberManualRecordIcon />}
+          // >
+          //   LIVE
+          // </Button>
         )}
         <img
           className={classNames(styles.media)}
