@@ -24,7 +24,7 @@ export default function Card({
   user,
   price,
   currency,
-  timeLeft, //= 1000 * 60 * 60 * 24,
+  timeLeft = 1000 * 60 * 60 * 24,
 }) {
   const { avatarUrl, verified } = user;
   const totalPrice = `~${price} ${currency}`;
@@ -39,7 +39,7 @@ export default function Card({
       <div className={classNames(styles.cardMedia)}>
         {timeLeft && (
           <Button
-            className={classNames(styles.liveButton)}
+            className={classNames(styles.badge)}
             variant="contained"
             color="success"
             size="small"
