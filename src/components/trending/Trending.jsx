@@ -1,25 +1,44 @@
-import styles from "./Trending.module.scss";
-import {
-  FormControl,
-  Grid,
-  Select,
-  MenuItem,
-  Container,
-  Stack,
-  InputLabel,
-} from "@mui/material";
+import React, { useState } from "react";
+import Container from "@mui/material/Container";
+import Grid from "@mui/material/Grid";
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Stack from "@mui/material/Stack";
 import Card from "../card/Card";
+import styles from "./Trending.module.scss";
+import classNames from "classnames";
 
-function Trending({ cards = [] }) {
+const options = ["Today", "This week", "This month"];
+
+export default function Trending({ cards = [] }) {
+  const [timeOption, setTimeOption] = useState(options[0]);
+
+  const handleChange = (event) => {
+    setTimeOption(event.target.value);
+  };
+
   return (
-    <div className="Trending">
+    <div className={classNames(styles.trendingContainer)}>
       <Container>
-        <Stack spacing={2} direction="row">
-          <h1>Trending</h1>
-          <FormControl fullWidth className={styles.select}>
-            <InputLabel id="select-label">Sort By</InputLabel>
-            <Select labelId="select-label">
-              <MenuItem>This week</MenuItem>
+        <Stack
+          direction="row"
+          justifyContent="space-between"
+          alignItems="center"
+          spacing={2}
+        >
+          <h1 className={classNames(styles.title)}>Trending</h1>
+          <FormControl sx={{ margin: 1, minWidth: 240 }}>
+            <Select
+              value={timeOption}
+              onChange={handleChange}
+              className={classNames(styles.select)}
+            >
+              {options.map((option) => (
+                <MenuItem key={option} value={option}>
+                  {option}
+                </MenuItem>
+              ))}
             </Select>
           </FormControl>
         </Stack>
@@ -36,5 +55,3 @@ function Trending({ cards = [] }) {
     </div>
   );
 }
-
-export default Trending;

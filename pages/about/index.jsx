@@ -9,7 +9,6 @@ import Footer from "../../src/components/footer/Footer";
 import User from "../../src/components/user/User";
 import Trending from "../../src/components/trending/Trending";
 import Header from "../../src/components/header/Header";
-import Trending2 from "../../src/components/trending2/Trending";
 import Auctions from "../../src/components/auctions/Auctions";
 
 const auctionProps = {
@@ -108,10 +107,6 @@ export default function About() {
       <br />
       <Trending cards={trendingProps.cards} />
       <br />
-      <Trending2 cards={trendingProps.cards} />
-      <br />
-      <Card {...cardProps} />
-      <br />
       <Card {...cardProps} />
       <br />
       <Container maxWidth="sm">
@@ -123,7 +118,7 @@ export default function About() {
           </Grid>
         </Grid>
       </Container>
-      <Footer muted={"muted"} />
+      <Footer />
     </>
   );
 }

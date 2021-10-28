@@ -1,17 +1,9 @@
 @use "../../styles/colors";
 
-.container {
-  display: flex !important;
-  align-items: center;
-  justify-content: center;
-}
-
-.item {
-  display: contents !important;
-}
-
 .footerButton {
   color: colors.$text_primary !important;
+  padding-top: 0;
+  padding-left: 0;
 }
 
 .copyright {
