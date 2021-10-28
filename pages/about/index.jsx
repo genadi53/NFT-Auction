@@ -10,6 +10,44 @@ import User from "../../src/components/user/User";
 import Trending from "../../src/components/trending/Trending";
 import Header from "../../src/components/header/Header";
 import Trending2 from "../../src/components/trending2/Trending";
+import Auctions from "../../src/components/auctions/Auctions";
+
+const auctionProps = {
+  cards: [
+    {
+      name: "Clock",
+      user: { avatarUrl: "images/avatar.png", verified: true },
+      mediaUrl: "images/nft.jpg",
+      price: 200,
+      currency: "BTC",
+      timeLeft: 3.6e6,
+    },
+    {
+      name: "DOGE",
+      user: { avatarUrl: "images/avatar.png", verified: true },
+      mediaUrl: "images/nft.jpg",
+      price: 200,
+      currency: "BTC",
+      timeLeft: 3.6e6,
+    },
+    {
+      name: "BTC",
+      user: { avatarUrl: "images/avatar.png", verified: true },
+      mediaUrl: "images/nft.jpg",
+      price: 100,
+      currency: "BTC",
+      timeLeft: 3.6e6,
+    },
+    {
+      name: "Litecoin",
+      user: { avatarUrl: "images/avatar.png", verified: true },
+      mediaUrl: "images/nft.jpg",
+      price: 300,
+      currency: "BTC",
+      timeLeft: 3.6e6,
+    },
+  ],
+};
 
 const userProps = {
   name: "Okay",
@@ -21,14 +59,11 @@ const userProps = {
 
 const cardProps = {
   name: "Clock",
-  likes: 3500,
-  mediaUrl: "/images/nft.jpg",
-  user: {
-    avatarUrl: "/images/avatar.png",
-    verified: true,
-  },
-  price: "11.9",
-  currency: "ETH",
+  user: { avatarUrl: "images/avatar.png", verified: true },
+  mediaUrl: "images/nft.jpg",
+  price: 200,
+  currency: "BTC",
+  likes: 20,
 };
 
 const trendingProps = {
@@ -68,6 +103,8 @@ export default function About() {
   return (
     <>
       <Header />
+      <br />
+      <Auctions cards={auctionProps.cards} />
       <br />
       <Trending cards={trendingProps.cards} />
       <br />
