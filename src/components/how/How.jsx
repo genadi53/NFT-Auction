@@ -1,9 +1,8 @@
-import Grid from "@mui/material/Grid";
-import Container from "@mui/material/Container";
-import Button from "@mui/material/Button";
+import { Grid, Container, Button, Typography, Stack } from "@mui/material";
+import HowStep from "./HowStep";
 import styles from "./How.module.scss";
 import classNames from "classnames";
-
+import Link from "../link/Link";
 const props = {
   title: "How it works",
   description: `Discover, collect, and sell extraordinary NFTs
@@ -15,53 +14,64 @@ const props = {
         "You can get ETH, the digital currency that fuels transactions on the Ethereum blockchain, from a digital currency exchange",
     },
     {
-      title: "Crypto Wallet",
+      title: "Digital Currency",
       description:
-        "A crypto wallet, such as MetaMask, stores your ETH and processes transactions on the Ethereum blockchain.",
+        "You can get ETH, the digital currency that fuels transactions on the Ethereum blockchain, from a digital currency exchange",
     },
     {
-      title: "BUM.",
+      title: "Digital Currency",
       description:
-        "Let's connect your wallet to BUM, edit your profile, and begin interacting in the space.",
+        "You can get ETH, the digital currency that fuels transactions on the Ethereum blockchain, from a digital currency exchange",
     },
   ],
   link: "https://app.boom.dev/",
 };
 
-export default function Header() {
+export default function How({ title, description, link, items = [] }) {
   return (
-    <Container>
-      <Grid container justifyContent="space-between" spacing={2} width="100%">
-        <Grid item alignSelf="flex-start" alignSelf="center" xs={2}>
-          <Logo />
-        </Grid>
-
-        <Grid item xs={5} alignSelf="center">
-          <OutlinedInput
-            className={classNames(styles.headerInput)}
-            variant="outlined"
-            autoComplete="off"
-            fullWidth
-            placeholder="Find items, users and activities..."
-            startAdornment={
-              <InputAdornment position="start">
-                <Search className={classNames(styles.headerButton)} />
-              </InputAdornment>
-            }
-          />
-        </Grid>
-
-        <Grid item flexDirection="row" alignSelf="center" flexWrap="wrap">
-          <Button className={classNames(styles.headerButton)}>Home</Button>
-          <Button className={classNames(styles.headerButton)}>Activity</Button>
-          <Button
-            variant="contained"
-            className={classNames(styles.headerButton)}
+    <Container className={classNames(styles.container)}>
+      <div className={classNames(styles.wrapper)}>
+        <Grid container justifyContent="space-between">
+          <Grid
+            item
+            sm={6}
+            xs={12}
+            className={classNames(styles.leftContainer)}
           >
-            Explore
-          </Button>
+            <div className={classNames(styles.leftContainerContentWrapper)}>
+              <h1>{props.title}</h1>
+              <p>{props.description}</p>
+
+              <Button className={classNames(styles.button)} variant="contained">
+                <Link href="/about" className={classNames(styles.link)}>
+                  Learn More
+                </Link>
+              </Button>
+            </div>
+          </Grid>
+          <Grid item xs={12} sm={5}>
+            <div className={classNames(styles.stepsContainer)}>
+              {props.items.map((item, idx) => {
+                return <HowStep {...item} number={idx + 1} />;
+              })}
+            </div>
+          </Grid>
         </Grid>
-      </Grid>
+      </div>
     </Container>
   );
 }
+// <Typography
+//   className={classNames(styles.title)}
+//   variant="h2"
+//   component="div"
+// >
+//   {props.title}
+// </Typography>
+// <Typography
+//   className={classNames(styles.description)}
+//   variant="body1"
+//   component="div"
+// >
+//   {props.description}
+// </Typography>
