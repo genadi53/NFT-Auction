@@ -1,19 +1,19 @@
-import MaterialCard from "@mui/material/Card";
-import CardHeader from "@mui/material/CardHeader";
 // import CardMedia from "@mui/material/CardMedia";
 // import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import Chip from "@mui/material/Chip";
+import {
+  Card as MaterialCard,
+  CardHeader,
+  CardContent,
+  Chip,
+  Button,
+  Typography,
+  Grid,
+} from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-import Grid from "@mui/material/Grid";
-
 import Countdown from "react-countdown";
 import millify from "millify";
 import Avatar from "../avatar/Avatar";
-
 import styles from "./Card.module.scss";
 import classNames from "classnames";
 

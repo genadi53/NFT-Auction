@@ -1,5 +1,4 @@
-import Grid from "@mui/material/Grid";
-import Button from "@mui/material/Button";
+import { Grid, Button } from "@mui/material";
 import Logo from "../logo/Logo";
 import styles from "./Footer.module.scss";
 import classNames from "classnames";

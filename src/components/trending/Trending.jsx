@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import Container from "@mui/material/Container";
-import Grid from "@mui/material/Grid";
-import Select from "@mui/material/Select";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Stack from "@mui/material/Stack";
+import {
+  Container,
+  Grid,
+  Select,
+  MenuItem,
+  FormControl,
+  Stack,
+} from "@mui/material";
 import Card from "../card/Card";
 import styles from "./Trending.module.scss";
 import classNames from "classnames";
