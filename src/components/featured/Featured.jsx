@@ -12,13 +12,6 @@ function srcset(image, size, rows = 1, cols = 1) {
   };
 }
 
-// <img
-//   {...srcset(item.image, 131, item.rows, item.cols)}
-//   alt={item.title}
-//   loading="lazy"
-//   onClick={() => router.push(item.href)}
-// />;
-
 export default function How({ items = [] }) {
   const router = useRouter();
   return (
@@ -27,6 +20,7 @@ export default function How({ items = [] }) {
         <ImageList
           className={classNames(styles.imageList)}
           sx={{ width: "80vw", marginY: 10 }}
+          gap={8}
           variant="quilted"
           cols={6}
           rowHeight={160}
