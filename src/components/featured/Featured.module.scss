@@ -1,0 +1,20 @@
+@use "../../styles/colors";
+
+.container {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  max-height: 380px;
+  margin: 50px 0;
+  padding: 60px 0;
+  background-color: rgba(colors.$primary_main, 0.1);
+
+  .imageList {
+    margin-top: 30px !important;
+    margin-bottom: 30px !important;
+
+    img {
+      border-radius: 7.5%;
+    }
+  }
+}
