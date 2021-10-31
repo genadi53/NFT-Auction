@@ -1,6 +1,8 @@
 import Example from "../src/components/example/Example";
 import How from "../src/components/how/How";
 import Featured from "../src/components/featured/Featured";
+import Collector from "../src/components/collectors/Collector";
+import Column from "../src/components/collectors/CollectorColumn";
 
 const howProps = {
   title: "How it works",
@@ -77,11 +79,40 @@ const featuredProps = {
   ],
 };
 
+const collectorsColumnProps = {
+  items: [
+    {
+      id: 1,
+      name: "Peter",
+      nftsCount: 12312,
+      avatar: "/images/avatar.png",
+      verified: true,
+    },
+    {
+      id: 2,
+      name: "John",
+      nftsCount: 1111,
+      avatar: "/images/avatar.png",
+      verified: true,
+    },
+    {
+      id: 3,
+      name: "Steven",
+      nftsCount: 432,
+      avatar: "/images/avatar.png",
+      verified: true,
+    },
+  ],
+};
+
 export default function Index() {
   return (
     <>
-      <Featured {...featuredProps} />
+      <Column {...collectorsColumnProps} />
       <How {...howProps} />
     </>
   );
 }
+
+// <Featured {...featuredProps} />
+//

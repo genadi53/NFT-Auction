@@ -103,6 +103,8 @@ export default function About() {
     <>
       <Header />
       <br />
+      <User {...userProps} />
+      <br />
       <Auctions cards={auctionProps.cards} />
       <br />
       <Trending cards={trendingProps.cards} />

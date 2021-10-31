@@ -3,7 +3,7 @@ import classNames from "classnames";
 
 export default function HowStep({ number, title, description }) {
   return (
-    <div className={classNames(styles.container)} maxWidth="xl">
+    <div className={classNames(styles.container)}>
       <div className={classNames(styles.numberContainer)}>
         <div className={classNames(styles.number)}>{number}</div>
       </div>
