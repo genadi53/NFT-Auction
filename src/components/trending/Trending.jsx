@@ -45,9 +45,9 @@ export default function Trending({ cards = [] }) {
           </FormControl>
         </Stack>
         <Grid container spacing={2}>
-          {cards.slice(0, 4).map((card, index) => {
+          {cards.slice(0, 4).map((card, idx) => {
             return (
-              <Grid item xs={3} key={index}>
+              <Grid item md={3} sm={6} xs={12} key={idx}>
                 <Card {...card} />
               </Grid>
             );

@@ -34,7 +34,7 @@ export default function Collector({
             info={`${nftsCount} item${nftsCount > 1 ? "s" : ""}`}
             avatar={avatar}
             verified={verified}
-            size={55}
+            size={50}
           />
         </Grid>
       </Grid>

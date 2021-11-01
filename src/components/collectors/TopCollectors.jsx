@@ -7,21 +7,31 @@ import {
   FormControl,
   Stack,
 } from "@mui/material";
-import Card from "../card/Card";
-import styles from "./Auctions.module.scss";
+import { chunk } from "lodash";
+import CollectorColumn from "./CollectorColumn";
+import styles from "./TopCollectors.module.scss";
 import classNames from "classnames";
 
 const options = ["Today", "This week", "This month"];
 
-export default function Auctions({ cards = [] }) {
+const getArrayToChunks = (array = []) => {
+  const arrayToChunk = array.map((element, idx) => ({
+    ...element,
+    id: idx + 1,
+  }));
+  return chunk(arrayToChunk, 3);
+};
+
+export default function TopCollectors({ collectors = [] }) {
   const [timeOption, setTimeOption] = useState(options[0]);
+  const collectorChunks = getArrayToChunks(collectors);
 
   const handleChange = (event) => {
     setTimeOption(event.target.value);
   };
 
   return (
-    <div className={classNames(styles.auctionsContainer)}>
+    <div className={classNames(styles.container)}>
       <Container>
         <Stack
           direction="row"
@@ -29,7 +39,7 @@ export default function Auctions({ cards = [] }) {
           alignItems="center"
           spacing={2}
         >
-          <h1 className={classNames(styles.title)}>🔥 Live Auctions</h1>
+          <h1>Top Collectors</h1>
           <FormControl sx={{ margin: 1, minWidth: 240 }}>
             <Select
               value={timeOption}
@@ -44,11 +54,15 @@ export default function Auctions({ cards = [] }) {
             </Select>
           </FormControl>
         </Stack>
-        <Grid container spacing={2}>
-          {cards.slice(0, 4).map((card, index) => {
+        <Grid
+          container
+          spacing={2}
+          className={classNames(styles.CollectorColumns)}
+        >
+          {collectorChunks.map((chunk, idx) => {
             return (
-              <Grid item md={3} sm={6} xs={12} key={index}>
-                <Card {...card} />
+              <Grid item md={3} xs={12} key={idx}>
+                <CollectorColumn items={chunk} />
               </Grid>
             );
           })}

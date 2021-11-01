@@ -1,0 +1,26 @@
+@use "../../styles/colors";
+
+.container {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid red !important;
+
+  .CollectorColumns {
+    display: flex !important;
+    align-items: stretch;
+    justify-content: center;
+  }
+}
+
+.title {
+  margin-top: 0.7rem !important;
+  margin-left: 0.7rem !important;
+}
+
+.select {
+  svg {
+    color: white !important;
+  }
+}
