@@ -24,7 +24,7 @@ export default function How({ items = [] }) {
           gap={8}
           variant="quilted"
           cols={6}
-          rowHeight={160}
+          rowHeight={180}
         >
           {items.map((item) => (
             <ImageListItem
@@ -35,7 +35,7 @@ export default function How({ items = [] }) {
               <img
                 //src={item.image} //{`${item.image}?w=164&h=164&fit=crop&auto=format`}
                 //   srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
-                {...srcset(item.image, 160, item.rows, item.cols)}
+                {...srcset(item.image, 180, item.rows, item.cols)}
                 alt={item.title}
                 onClick={() => router.push(item.href)}
                 loading="lazy"

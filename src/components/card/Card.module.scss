@@ -5,6 +5,7 @@
 
 .cardMedia {
   position: relative;
+  height: 180px;
 
   .badge {
     position: absolute;
@@ -64,6 +65,8 @@
     -webkit-background-position: center;
     background-position: center;
     object-fit: cover;
+    width: 240px;
+    height: 180px;
   }
 
   .liveCountdown {

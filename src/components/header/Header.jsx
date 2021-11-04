@@ -8,8 +8,8 @@ import classNames from "classnames";
 
 export default function Header() {
   return (
-    <Container>
-      <Grid container justifyContent="space-between" spacing={2} width="100%">
+    <div className={classNames(styles.header)}>
+      <Grid container justifyContent="space-evenly" spacing={2} width="100%">
         <Grid item alignSelf="flex-start" alignSelf="center" xs={2}>
           <Logo />
         </Grid>
@@ -40,6 +40,6 @@ export default function Header() {
           </Button>
         </Grid>
       </Grid>
-    </Container>
+    </div>
   );
 }

@@ -7,6 +7,7 @@ import {
   FormControl,
   Stack,
 } from "@mui/material";
+import _ from "lodash";
 import { chunk } from "lodash";
 import CollectorColumn from "./CollectorColumn";
 import styles from "./TopCollectors.module.scss";
@@ -14,17 +15,23 @@ import classNames from "classnames";
 
 const options = ["Today", "This week", "This month"];
 
-const getArrayToChunks = (array = []) => {
-  const arrayToChunk = array.map((element, idx) => ({
-    ...element,
-    id: idx + 1,
-  }));
-  return chunk(arrayToChunk, 3);
-};
+// const getArrayToChunks = (array = []) => {
+//   const arrayToChunk = array.map((element, idx) => ({
+//     ...element,
+//     id: idx + 1,
+//   }));
+//   return chunk(arrayToChunk, 3);
+// };
 
 export default function TopCollectors({ collectors = [] }) {
   const [timeOption, setTimeOption] = useState(options[0]);
-  const collectorChunks = getArrayToChunks(collectors);
+  // const collectorChunks = getArrayToChunks(collectors);
+
+  const res = collectors.map((element, idx) => ({
+    ...element,
+    id: idx + 1,
+  }));
+  const collectorChunks = _.chunk(res, 3);
 
   const handleChange = (event) => {
     setTimeOption(event.target.value);

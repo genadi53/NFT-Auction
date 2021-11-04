@@ -1,0 +1,47 @@
+.Why_container {
+  background-color: #0c4bfa;
+  margin-top: 50px;
+  margin-bottom: 60px;
+  padding: 60px 0;
+
+  .wrapper {
+    max-width: 1400px;
+    margin: auto;
+    position: relative;
+    padding: 0 20px;
+
+    .Why_leftColumn {
+      display: flex;
+      flex-flow: column;
+      justify-content: center;
+    }
+  }
+}
+
+.Why_infoStack {
+  margin: -40px 0;
+}
+
+.Info_Container {
+  //   align-items: stretch;
+  //   margin-bottom: 10px;
+  background-color: #fff;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+
+  .Info_iconContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30%;
+    padding: 45px;
+    flex: none;
+    background-color: #0cfa28;
+  }
+
+  .Info_detailsContainer {
+    padding: 35px;
+    color: red;
+  }
+}
