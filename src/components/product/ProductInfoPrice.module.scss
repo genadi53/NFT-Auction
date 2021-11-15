@@ -1,0 +1,10 @@
+@use "../../styles/colors";
+
+.product-info-price {
+  width: 100%;
+
+  .priceText {
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+}

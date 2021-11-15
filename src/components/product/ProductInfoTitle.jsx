@@ -1,5 +1,5 @@
 import { Typography } from "@mui/material";
-import styles from "./How.module.scss";
+import styles from "./ProductInfoTitle.module.scss";
 import classNames from "classnames";
 
 export default function ProductInfoTitle({ text }) {
