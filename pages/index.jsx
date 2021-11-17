@@ -7,6 +7,8 @@ import TopCollectors from "../src/components/collectors/TopCollectors";
 import Auctions from "../src/components/auctions/Auctions";
 import Footer from "../src/components/footer/Footer";
 
+import ProductInfoStatus from "../src/components/product/ProductInfoStatus";
+
 import dataFeatured from "../data/featured.json";
 import dataTrending from "../data/trending.json";
 import dataUsers from "../data/users.json";
@@ -334,6 +336,7 @@ export default function Index() {
 
   return (
     <>
+      <ProductInfoStatus />
       <Header />
       <Featured items={featuredCards} />
       <Trending cards={trendingCards} />

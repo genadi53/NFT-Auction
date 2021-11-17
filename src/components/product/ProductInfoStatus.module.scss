@@ -1,0 +1,14 @@
+@use "../../styles/colors";
+
+.product-info-status {
+  .status {
+    border-radius: 5%;
+    color: colors.$background_paper;
+    background-color: colors.$secondary_main;
+    font-weight: 700;
+
+    .icon {
+      color: colors.$background_paper;
+    }
+  }
+}
