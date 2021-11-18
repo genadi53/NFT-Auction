@@ -6,9 +6,6 @@ import How from "../src/components/how/How";
 import TopCollectors from "../src/components/collectors/TopCollectors";
 import Auctions from "../src/components/auctions/Auctions";
 import Footer from "../src/components/footer/Footer";
-
-import ProductInfoStatus from "../src/components/product/ProductInfoStatus";
-
 import dataFeatured from "../data/featured.json";
 import dataTrending from "../data/trending.json";
 import dataUsers from "../data/users.json";
@@ -40,244 +37,21 @@ const howProps = {
   link: "https://google.com",
 };
 
-// const featuredProps = {
-//   items: [
-//     {
-//       image:
-//         "https://images.unsplash.com/photo-1551963831-b3b1ca40c98e?w=500&h=500",
-//       title: "Breakfast",
-//       rows: 2,
-//       cols: 3,
-//       href: "/about",
-//     },
-//     {
-//       image:
-//         "https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=500&h=500",
-//       title: "Burger",
-//       href: "/about",
-//     },
-//     {
-//       image:
-//         "https://images.unsplash.com/photo-1522770179533-24471fcdba45?w=500&h=500",
-//       title: "Camera",
-//       href: "/about",
-//     },
-//     {
-//       image:
-//         "https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c?w=500&h=500",
-//       title: "Coffee",
-//       href: "/about",
-//     },
-//     {
-//       image:
-//         "https://images.unsplash.com/photo-1533827432537-70133748f5c8?w=500&h=500",
-//       title: "Hats",
-//       href: "/about",
-//     },
-//     {
-//       image:
-//         "https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?w=500&h=500",
-//       title: "Honey",
-//       href: "/about",
-//     },
-//     {
-//       image:
-//         "https://images.unsplash.com/photo-1516802273409-68526ee1bdd6?w=500&h=500",
-//       title: "Basketball",
-//       href: "/about",
-//     },
-//   ],
-// };
-
-// const collectorsColumnProps = {
-//   items: [
-//     {
-//       id: 1,
-//       name: "Peter",
-//       nftsCount: 12312,
-//       avatar: "/images/avatar.png",
-//       verified: true,
-//     },
-//     {
-//       id: 2,
-//       name: "John",
-//       nftsCount: 1111,
-//       avatar: "/images/avatar.png",
-//       verified: true,
-//     },
-//     {
-//       id: 3,
-//       name: "Steven",
-//       nftsCount: 432,
-//       avatar: "/images/avatar.png",
-//       verified: true,
-//     },
-//   ],
-// };
-
-// const TopCollectorsProps = {
-//   collectors: [
-//     {
-//       name: "Peter",
-//       nftsCount: 12312,
-//       avatar: "/images/avatar.png",
-//       verified: true,
-//     },
-//     {
-//       name: "John",
-//       nftsCount: 1111,
-//       avatar: "/images/avatar.png",
-//       verified: true,
-//     },
-//     {
-//       name: "Steven",
-//       nftsCount: 52,
-//       avatar: "/images/avatar.png",
-//       verified: true,
-//     },
-//     {
-//       name: "Antonio Banderas",
-//       nftsCount: 3,
-//       avatar: "/images/avatar.png",
-//       verified: true,
-//     },
-//     {
-//       name: "Donald",
-//       nftsCount: 12,
-//       avatar: "/images/avatar.png",
-//       verified: true,
-//     },
-//     {
-//       name: "Peter",
-//       nftsCount: 12312,
-//       avatar: "/images/avatar.png",
-//       verified: true,
-//     },
-//     {
-//       name: "John",
-//       nftsCount: 1111,
-//       avatar: "/images/avatar.png",
-//       verified: true,
-//     },
-//     {
-//       name: "Steven",
-//       nftsCount: 52,
-//       avatar: "/images/avatar.png",
-//       verified: true,
-//     },
-//     {
-//       name: "Antonio Banderas",
-//       nftsCount: 3,
-//       avatar: "/images/avatar.png",
-//       verified: true,
-//     },
-//     {
-//       name: "Donald",
-//       nftsCount: 12,
-//       avatar: "/images/avatar.png",
-//       verified: true,
-//     },
-//     {
-//       name: "Antonio Banderas",
-//       nftsCount: 3,
-//       avatar: "/images/avatar.png",
-//       verified: true,
-//     },
-//     {
-//       name: "Donald",
-//       nftsCount: 12,
-//       avatar: "/images/avatar.png",
-//       verified: true,
-//     },
-//   ],
-// };
-
-// const auctionProps = {
-//   cards: [
-//     {
-//       name: "Clock",
-//       user: { avatarUrl: "images/avatar.png", verified: true },
-//       mediaUrl: "images/nft.jpg",
-//       price: 200,
-//       currency: "BTC",
-//       timeLeft: 3.6e6,
-//     },
-//     {
-//       name: "DOGE",
-//       user: { avatarUrl: "images/avatar.png", verified: true },
-//       mediaUrl: "images/nft.jpg",
-//       price: 200,
-//       currency: "BTC",
-//       timeLeft: 3.6e6,
-//     },
-//     {
-//       name: "BTC",
-//       user: { avatarUrl: "images/avatar.png", verified: true },
-//       mediaUrl: "images/nft.jpg",
-//       price: 100,
-//       currency: "BTC",
-//       timeLeft: 3.6e6,
-//     },
-//     {
-//       name: "Litecoin",
-//       user: { avatarUrl: "images/avatar.png", verified: true },
-//       mediaUrl: "images/nft.jpg",
-//       price: 300,
-//       currency: "BTC",
-//       timeLeft: 3.6e6,
-//     },
-//   ],
-// };
-
-// const userProps = {
-//   name: "Okay",
-//   info: "boomer",
-//   avatar: "/images/avatar.png",
-//   verified: true,
-//   size: 55,
-// };
-
-// const cardProps = {
-//   name: "Clock",
-//   user: { avatarUrl: "images/avatar.png", verified: true },
-//   mediaUrl: "images/nft.jpg",
-//   price: 200,
-//   currency: "BTC",
-//   likes: 20,
-// };
-
-// const trendingProps = {
-//   cards: [
-//     {
-//       name: "Clock",
-//       user: { avatarUrl: "images/avatar.png", verified: true },
-//       mediaUrl: "images/nft.jpg",
-//       price: 200,
-//       currency: "BTC",
-//     },
-//     {
-//       name: "DOGE",
-//       user: { avatarUrl: "images/avatar.png", verified: true },
-//       mediaUrl: "images/nft.jpg",
-//       price: 200,
-//       currency: "BTC",
-//     },
-//     {
-//       name: "BTC",
-//       user: { avatarUrl: "images/avatar.png", verified: true },
-//       mediaUrl: "images/nft.jpg",
-//       price: 100,
-//       currency: "BTC",
-//     },
-//     {
-//       name: "Litecoin",
-//       user: { avatarUrl: "images/avatar.png", verified: true },
-//       mediaUrl: "images/nft.jpg",
-//       price: 300,
-//       currency: "BTC",
-//     },
-//   ],
-// };
+const productInfoProps = {
+  title: "John",
+  creator: {
+    name: "George",
+    avatar:
+      "https://nft-auction.herokuapp.com/uploads/0xa6dbe6b4f8e2905c26e123ec6fd08a8f7200dbc1_64120a76f4.jpg",
+    verified: true,
+  },
+  price: 20,
+  currency: "ETH",
+  likes: 20,
+  onTimeEnd: () => {},
+  timeEnd: "2022-09-02T20:43:19.149Z",
+  isLive: true,
+};
 
 export default function Index() {
   const [featuredCards, setFeaturedCards] = useState([]);
@@ -286,12 +60,12 @@ export default function Index() {
   const [liveAuctionCards, setLiveAuctionCards] = useState([]);
 
   useEffect(() => {
-    const cardsForFeatured = dataTrending.map((card) => {
+    const cardsForFeatured = dataFeatured.map((card) => {
       return { image: card.source.url, title: card.name, href: "/about" };
     });
     cardsForFeatured[0] = { ...cardsForFeatured[0], cols: 3, rows: 2 };
 
-    const cardsForTrending = dataFeatured.map((card) => {
+    const cardsForTrending = dataTrending.map((card) => {
       return {
         mediaUrl: card.source.url,
         name: card.name,
@@ -336,7 +110,6 @@ export default function Index() {
 
   return (
     <>
-      <ProductInfoStatus />
       <Header />
       <Featured items={featuredCards} />
       <Trending cards={trendingCards} />
