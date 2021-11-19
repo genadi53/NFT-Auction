@@ -7,7 +7,7 @@ import millify from "millify";
 
 export default function ProductInfoLikes({ amount = 0 }) {
   return (
-    <div className={styles["product-info-likes"]}>
+    <div className={classNames(styles["product-info-likes"])}>
       <Chip
         icon={<FavoriteIcon className={classNames(styles.icon)} />}
         className={classNames(styles.likes)}
