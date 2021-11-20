@@ -1,0 +1,36 @@
+@use "../../styles/colors";
+
+.product-info-timer {
+  width: 100%;
+
+  .card {
+    height: 140px;
+  }
+
+  .title-container {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    opacity: 0.8;
+    height: 50px;
+
+    .title {
+      font-weight: 700;
+      color: colors.$background_paper;
+    }
+  }
+
+  .timer {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    font-weight: 700;
+    color: colors.$background_paper;
+    font-size: 2.5rem;
+    height: 90px;
+  }
+
+  .active {
+    background-color: colors.$secondary_main;
+  }
+}

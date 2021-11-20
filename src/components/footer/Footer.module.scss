@@ -1,0 +1,11 @@
+@use "../../styles/colors";
+
+.footerButton {
+  color: colors.$text_primary !important;
+  padding-top: 0;
+  padding-left: 0;
+}
+
+.copyright {
+  color: colors.$text_disabled !important;
+}

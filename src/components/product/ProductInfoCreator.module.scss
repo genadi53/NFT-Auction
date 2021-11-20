@@ -1,0 +1,33 @@
+@use "../../styles/colors.scss";
+
+.product-info-creator {
+  background-color: colors.$background_paper;
+  border-radius: 1rem;
+
+  .title-container {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .title {
+    font-weight: 700;
+  }
+
+  .product-info-creator {
+    width: 100%;
+  }
+
+  .user-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 5%;
+    height: 90px;
+  }
+
+  .card {
+    height: 140px;
+  }
+}

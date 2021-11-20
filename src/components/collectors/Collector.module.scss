@@ -1,0 +1,38 @@
+@use "../../styles/colors";
+
+.container {
+  display: flex !important;
+  justify-content: center;
+  align-items: stretch;
+  // max-width: 300px;
+  height: 70px;
+  // max-height: 75px;
+  background-color: rgba(colors.$primary_main, 10%);
+
+  @media (max-width: 959px) {
+    align-items: stretch;
+  }
+
+  .id {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    padding: 0.8rem;
+    flex: none;
+    background-color: rgba(colors.$primary_main, 20%);
+
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+    margin-right: 7.5px;
+  }
+
+  .userContainer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    color: colors.$text_primary;
+    text-align: start;
+  }
+}

@@ -1,5 +1,14 @@
 @use "../../styles/colors";
 
+.header {
+  width: 100vw;
+  height: 98px;
+  left: 0px;
+  top: 0px;
+  margin-bottom: 20px;
+  background-color: colors.$background_paper;
+}
+
 .headerButton {
   color: colors.$text_primary !important;
 }
@@ -10,5 +19,5 @@
 
 .headerInput {
   width: 100%;
-  color: colors.$background_paper;
+  background-color: colors.$background_default;
 }

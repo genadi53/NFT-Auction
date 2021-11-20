@@ -1,0 +1,28 @@
+@use "../../styles/colors.scss";
+
+.product-action {
+  width: 100%;
+
+  button {
+    font-size: 1rem !important;
+    font-weight: 700 !important;
+    line-height: 1.25rem !important;
+  }
+
+  .buttonBuy {
+    &:disabled {
+      color: colors.$text_disabled !important;
+      background-color: rgba(colors.$text_disabled, 20%) !important;
+    }
+  }
+
+  .buttonBid {
+    border: 2px solid colors.$secondary_main !important;
+
+    &:disabled {
+      color: colors.$text_disabled !important;
+      background-color: transparent !important;
+      border-color: colors.$text_disabled !important;
+    }
+  }
+}

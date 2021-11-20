@@ -1,19 +1,15 @@
 import * as React from "react";
-import Grid from "@mui/material/Grid";
-import Container from "@mui/material/Container";
-import Button from "@mui/material/Button";
-import Input from "@mui/material/Input";
+import { Grid, Container, Button, Input, InputAdornment } from "@mui/material";
 import { TextField, OutlinedInput } from "@mui/material";
 import Search from "@mui/icons-material/Search";
-import InputAdornment from "@mui/material/InputAdornment";
 import Logo from "../logo/Logo";
 import styles from "./Header.module.scss";
 import classNames from "classnames";
 
 export default function Header() {
   return (
-    <Container>
-      <Grid container justifyContent="space-between" spacing={2} width="100%">
+    <div className={classNames(styles.header)}>
+      <Grid container justifyContent="space-evenly" spacing={2} width="100%">
         <Grid item alignSelf="flex-start" alignSelf="center" xs={2}>
           <Logo />
         </Grid>
@@ -44,6 +40,6 @@ export default function Header() {
           </Button>
         </Grid>
       </Grid>
-    </Container>
+    </div>
   );
 }

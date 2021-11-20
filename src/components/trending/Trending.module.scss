@@ -1,0 +1,19 @@
+@use "../../styles/colors";
+
+.trendingContainer {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  margin: 50px 0 !important;
+}
+
+.title {
+  margin-top: 0.7rem !important;
+  margin-left: 0.7rem !important;
+}
+
+.select {
+  svg {
+    color: white !important;
+  }
+}

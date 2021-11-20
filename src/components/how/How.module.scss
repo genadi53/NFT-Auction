@@ -1,0 +1,72 @@
+@use "../../styles/colors";
+
+.container {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  margin: 50px 0;
+  padding: 60px 0;
+  background-color: colors.$primary_main;
+
+  .wrapper {
+    max-width: 1400px;
+    margin: auto;
+    position: relative;
+    padding: 0 20px;
+
+    .leftContainer {
+      display: flex !important;
+      flex-direction: column;
+      flex-flow: column;
+      justify-content: center;
+      align-items: flex-start;
+
+      .leftContainerContentWrapper {
+        @media (max-width: 959px) {
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+          text-align: center;
+          margin-bottom: 20px;
+        }
+      }
+
+      @media (min-width: 600px) {
+        flex-grow: 0;
+        max-width: 50%;
+        flex-basis: 50%;
+      }
+
+      .title {
+        color: colors.$text_primary;
+
+        @media (max-width: 959px) {
+          font-size: 1rem;
+          line-height: 1.5rem;
+        }
+      }
+
+      .description {
+        color: colors.$text_secondary;
+      }
+    }
+
+    .stepsContainer {
+      margin: -40px 0;
+
+      @media (max-width: 959px) {
+        margin-top: 0;
+        margin-bottom: -30px;
+      }
+    }
+  }
+}
+
+.button {
+  background-color: colors.$text_primary !important;
+
+  .link {
+    color: rgba(132, 0, 255);
+    text-decoration: none;
+  }
+}

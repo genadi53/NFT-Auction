@@ -1,0 +1,20 @@
+@use "../../styles/colors";
+
+.product-info-status {
+  .status {
+    color: colors.$background_paper !important;
+    background-color: colors.$secondary_main !important;
+    border-radius: 5px !important;
+    font-weight: 700;
+
+    .icon {
+      color: colors.$background_paper;
+      user-select: none;
+      width: 1rem;
+      display: inline-block;
+      fill: colors.$background_default;
+      flex-shrink: 0;
+      margin-right: -0.7rem !important;
+    }
+  }
+}

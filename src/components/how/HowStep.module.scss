@@ -1,0 +1,67 @@
+@use "../../styles/colors";
+
+.container {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  background-color: colors.$background_paper;
+  border-radius: 25px;
+
+  @media (max-width: 959px) {
+    align-items: stretch;
+    margin-bottom: 10px;
+  }
+
+  .numberContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    padding: 45px;
+    flex: none;
+    background-color: rgba(colors.$primary_main, 10%);
+
+    @media (max-width: 959px) {
+      align-items: center !important;
+      width: 12%;
+      padding: 10px;
+    }
+
+    .number {
+      font-size: 70px;
+      font-weight: 700;
+      text-align: center;
+
+      @media (max-width: 959px) {
+        font-size: 25px;
+        font-weight: 700;
+        text-align: center;
+      }
+    }
+  }
+
+  .textContainer {
+    padding: 15px;
+    color: colors.$text_primary;
+
+    @media (max-width: 959px) {
+      padding: 25px;
+    }
+
+    .title {
+      font-size: 1.25rem;
+      line-height: 1.8rem;
+
+      @media (max-width: 959px) {
+        font-size: 1rem;
+        line-height: 1.4375rem;
+      }
+    }
+
+    .description {
+      font-size: 0.875rem;
+      line-height: 1.3125rem;
+    }
+  }
+}
