@@ -1,16 +1,17 @@
 .product-info {
   width: 100%;
-}
 
-.price-container {
-  display: flex;
-  padding: 15px 0;
-}
+  .price-container {
+    display: flex;
+    align-items: flex-start;
+    padding: 15px 0;
+  }
 
-.creator-container {
-  display: flex;
-}
+  .creator-container {
+    display: flex;
+  }
 
-.stats {
-  font-weight: bold;
+  .stats {
+    font-weight: 700;
+  }
 }
