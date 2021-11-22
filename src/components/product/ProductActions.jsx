@@ -17,7 +17,7 @@ export default function ProductActions({
           <Button
             className={classNames(styles.buttonBuy)}
             variant="contained"
-            disabled={isLive}
+            disabled={!isLive}
             fullWidth
             onClick={onBuy}
           >
@@ -29,7 +29,7 @@ export default function ProductActions({
             className={classNames(styles.buttonBid)}
             variant="outlined"
             color={"success"}
-            disabled={isLive}
+            disabled={!isLive}
             fullWidth
             onClick={onBid}
           >
