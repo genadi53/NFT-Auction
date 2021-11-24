@@ -1,0 +1,10 @@
+@use "../../styles/colors.scss";
+
+.hero {
+  background-color: colors.$primary_main;
+
+  .text {
+    text-align: center;
+    font-weight: 700 !important;
+  }
+}
