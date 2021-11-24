@@ -1,0 +1,15 @@
+@use "../../styles/colors.scss";
+
+.description {
+  .container {
+    background-color: colors.$background_paper !important;
+
+    .text {
+      color: colors.$text_secondary;
+    }
+
+    .image {
+      width: 100%;
+    }
+  }
+}
