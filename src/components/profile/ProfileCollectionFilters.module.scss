@@ -1,0 +1,20 @@
+@use "../../styles/colors.scss";
+
+.profile-collection-filters {
+  margin-bottom: 2rem;
+
+  svg {
+    color: white !important;
+  }
+
+  .search {
+    background-color: colors.$background_paper !important;
+    border-radius: 30px;
+
+    .search-icon {
+      color: colors.$text_primary !important;
+      margin-left: 0.5rem !important;
+      padding: 2px !important;
+    }
+  }
+}
