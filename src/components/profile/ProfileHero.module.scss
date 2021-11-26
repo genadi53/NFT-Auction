@@ -1,0 +1,10 @@
+.profile-hero {
+  display: flex;
+  justify-content: center;
+
+  .image {
+    height: 20rem;
+    width: 100%;
+    object-fit: cover; // or fill
+  }
+}
