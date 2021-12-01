@@ -1,0 +1,26 @@
+@use "../../styles/colors.scss";
+
+.activity-filters {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -10rem;
+  margin-bottom: 2.5rem;
+
+  .select {
+    svg {
+      color: white;
+    }
+  }
+
+  .search-icon {
+    color: colors.$text_primary !important;
+    margin-left: 0.5rem !important;
+    padding: 2px !important;
+  }
+  .search {
+    background-color: colors.$background_paper !important;
+    padding: 0.5rem !important;
+    border-radius: 30px;
+  }
+}
