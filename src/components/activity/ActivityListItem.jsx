@@ -15,7 +15,7 @@ export default function ActivityListItem({
       <Avatar size={55} url={user.avatarUrl} verified={user.verified} />
       <div className={classNames(styles.info)}>
         <p className={classNames(styles.text)}>
-          <span className={classNames(styles.username)}>{user.name}</span>
+          <span className={classNames(styles.username)}>{user.username}</span>
           <span> {type === "like" ? "liked" : "bought"} </span>
           <Link href={"#"} className={classNames(styles.link)}>
             {nft.name}
