@@ -17,9 +17,9 @@ export default function ProfileCollection({ user, filters, items = [] }) {
           </Grid>
         </Grid>
         <Grid container spacing={2} sx={{ marginTop: "50px" }}>
-          {items.map((item) => {
+          {items.map((item, idx) => {
             return (
-              <Grid item xs={3} key={item.id}>
+              <Grid item xs={3} key={idx}>
                 <Card
                   user={{
                     verified: user.verified,

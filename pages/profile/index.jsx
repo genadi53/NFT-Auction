@@ -1,60 +1,21 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, Fragment } from "react";
 import Header from "../../src/components/header/Header";
 import ProfileHero from "../../src/components/profile/ProfileHero";
 import ProfileUser from "../../src/components/profile/ProfileUser";
 import ProfileCollection from "../../src/components/profile/ProfileCollection";
 import Footer from "../../src/components/footer/Footer";
 import dataProfile from "../../data/profile.json";
-
-const filtersData = {
-  sort: [
-    {
-      label: "Date (Ascending)",
-      value: 1,
-    },
-    {
-      label: "Date (Descending)",
-      value: 2,
-    },
-    {
-      label: "Name (Ascending)",
-      value: 3,
-    },
-    {
-      label: "Name (Descending)",
-      value: 4,
-    },
-    {
-      label: "Price (Ascending)",
-      value: 5,
-    },
-    {
-      label: "Price (Descending)",
-      value: 6,
-    },
-  ],
-  price: [
-    {
-      label: "0 - 0.01 ETH",
-      value: 7,
-    },
-    {
-      label: "0.01 - 0.04 ETH",
-      value: 8,
-    },
-    {
-      label: "0.04 - 0.07 ETH",
-      value: 9,
-    },
-  ],
-};
+import dataFiltersProfile from "../../data/filtersProfile.json";
 
 export default function Profile() {
-  const [profileData, setProfileData] = useState(null);
+  const [profile, setProfile] = useState(null);
+  const [filters, setFilters] = useState(null);
 
   useEffect(() => {
-    setProfileData({
-      image: dataProfile.avatar.url,
+    setFilters({ ...dataFiltersProfile });
+
+    setProfile({
+      image: "images/nft.jpg",
       name: dataProfile.username,
       info: "Profile info goes here!",
       avatar: dataProfile.avatar.url,
@@ -64,28 +25,28 @@ export default function Profile() {
         avatar: dataProfile.avatar.url,
       },
       items: [...dataProfile.nfts],
-      filters: filtersData,
+      filters: filters,
     });
   }, []);
 
   return (
     <div>
       <Header />
-      {profileData && (
-        <>
-          <ProfileHero image={profileData.image} />
+      {filters && profile && (
+        <Fragment>
+          <ProfileHero image={profile.image} />
           <ProfileUser
-            name={profileData.name}
-            info={profileData.info}
-            avatar={profileData.avatar}
-            verified={profileData.verified}
+            name={profile.name}
+            info={profile.info}
+            avatar={profile.avatar}
+            verified={profile.verified}
           />
           <ProfileCollection
-            user={profileData.user}
-            filters={profileData.filters}
-            items={profileData.items}
+            user={profile.user}
+            filters={filters}
+            items={profile.items}
           />
-        </>
+        </Fragment>
       )}
       <Footer />
     </div>

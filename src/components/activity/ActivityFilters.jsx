@@ -82,7 +82,6 @@ export default function ActivityFilters({ filters }) {
                 </InputAdornment>
               ),
               className: styles.search,
-              disableUnderline: true,
             }}
           />
         </FormControl>

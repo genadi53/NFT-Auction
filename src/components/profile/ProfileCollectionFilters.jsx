@@ -67,7 +67,6 @@ export default function ProfileCollectionFilters({ filters }) {
             fullWidth
             className={classNames(styles.search)}
             InputProps={{
-              disableUnderline: true,
               startAdornment: (
                 <InputAdornment
                   position="start"
