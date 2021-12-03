@@ -1,14 +1,60 @@
-.containerGrid {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
+@use "../../styles/colors";
 
-  width: 300px !important;
-  margin: 0 auto !important;
+.login-form {
+  background-color: rgba(colors.$background_paper, 0.8);
+  // background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  margin-top: 6.5rem;
+  width: 400px;
+  // box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  border-radius: 15px;
 
-  .buttonContainer {
-    button {
-      margin: 10px auto;
+  .heading {
+    text-align: center;
+    text-transform: uppercase;
+    color: colors.$text_primary;
+    // color: black;
+    margin-top: 1.25rem;
+  }
+
+  .input {
+    border-radius: 25px;
+    background-color: rgba(colors.$primary_main, 0.2);
+    color: colors.$text_primary;
+
+    svg {
+      color: white;
+    }
+  }
+
+  .button {
+    background-color: colors.$primary_main;
+    color: colors.$text_primary;
+  }
+
+  .bottomText {
+    text-align: center;
+    font-size: 0.875rem;
+    margin-left: 1.5rem;
+    margin-bottom: 0.85rem;
+    text-decoration: none;
+    color: colors.$text_primary;
+    // color: black;
+
+    .link {
+      font-size: 0.875rem;
+      margin: 0;
+      color: colors.$primary_main;
+      -webkit-text-decoration: underline;
+      text-decoration: underline;
+
+      :visited {
+        text-decoration: none;
+        color: red;
+      }
     }
   }
 }
