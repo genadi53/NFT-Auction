@@ -34,15 +34,11 @@ export default function Explore() {
   return (
     <div>
       <Header />
-      <Container maxWidth="xl">
+      <Container>
         <Grid
           style={{
             marginTop: "50px",
-            marginBottom: "50px",
-          }}
-          sx={{
-            marginTop: "50px",
-            // alignItems: "flex-end",
+            alignItems: "flex-end",
             marginBottom: "50px",
           }}
           container
@@ -56,11 +52,11 @@ export default function Explore() {
           </Grid>
         </Grid>
 
-        <Grid container spacing={2} sx={{ marginBottom: "3.563rem" }}>
+        <Grid container spacing={2} sx={{ marginBottom: "4rem" }}>
           {nfts &&
-            nfts.map((nft) => {
+            nfts.map((nft, idx) => {
               return (
-                <Grid item sm={3} xs={6}>
+                <Grid item md={3} sm={6} xs={12} key={idx}>
                   <Card {...nft} />
                 </Grid>
               );
