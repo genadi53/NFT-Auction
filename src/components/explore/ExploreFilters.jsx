@@ -12,9 +12,13 @@ import SearchIcon from "@mui/icons-material/Search";
 import styles from "./ExploreFilters.module.scss";
 import classNames from "classnames";
 
-export default function ExploreFilters({ filters }) {
-  const [sortFilter, setSortFilter] = useState("");
-  const [priceFilter, setPriceFilter] = useState("");
+export default function ExploreFilters({
+  filters,
+  setSortByFilter,
+  setPriceFilter,
+}) {
+  const [sortBy, setSortBy] = useState("");
+  const [price, setPriceValue] = useState("");
 
   return (
     <div className={classNames(styles["explore-filters"])}>
@@ -30,9 +34,10 @@ export default function ExploreFilters({ filters }) {
             labelId="sort-by-label"
             color={"primary"}
             sx={{ minWidth: "170px" }}
-            value={sortFilter}
+            value={sortBy}
             onChange={(event) => {
-              setSortFilter(event.target.value);
+              setSortBy(event.target.value);
+              setSortByFilter(event.target.value);
             }}
           >
             {filters.sort.map((filter, idx) => {
@@ -50,8 +55,9 @@ export default function ExploreFilters({ filters }) {
             labelId="price-range-label"
             color={"primary"}
             sx={{ minWidth: "170px" }}
-            value={priceFilter}
+            value={price}
             onChange={(event) => {
+              setPriceValue(event.target.value);
               setPriceFilter(event.target.value);
             }}
           >

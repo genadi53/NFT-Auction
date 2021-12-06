@@ -38,7 +38,6 @@ export default function ActivityFilters({
             color={"primary"}
             className={classNames(styles.select)}
             onChange={(event) => {
-              console.log(event.target.value);
               setSortBy(event.target.value);
               setSortByFilter(event.target.value);
             }}
