@@ -1,23 +1,23 @@
 import { useState } from "react";
 import {
   FormControl,
-  Select,
+  InputAdornment,
   InputLabel,
   MenuItem,
+  Select,
   Stack,
   TextField,
-  InputAdornment,
 } from "@mui/material";
-import { Search } from "@mui/icons-material";
+import SearchIcon from "@mui/icons-material/Search";
+import styles from "./ExploreFilters.module.scss";
 import classNames from "classnames";
-import styles from "./ProfileCollectionFilters.module.scss";
 
-export default function ProfileCollectionFilters({ filters }) {
+export default function ExploreFilters({ filters }) {
   const [sortFilter, setSortFilter] = useState("");
   const [priceFilter, setPriceFilter] = useState("");
 
   return (
-    <div className={classNames(styles["profile-collection-filters"])}>
+    <div className={classNames(styles["explore-filters"])}>
       <Stack
         direction="row"
         justifyContent="flex-end"
@@ -28,6 +28,7 @@ export default function ProfileCollectionFilters({ filters }) {
           <InputLabel id="sort-by-label">Sort by</InputLabel>
           <Select
             labelId="sort-by-label"
+            color={"primary"}
             sx={{ minWidth: "170px" }}
             value={sortFilter}
             onChange={(event) => {
@@ -47,6 +48,7 @@ export default function ProfileCollectionFilters({ filters }) {
           <InputLabel id="price-range-label">Price range</InputLabel>
           <Select
             labelId="price-range-label"
+            color={"primary"}
             sx={{ minWidth: "170px" }}
             value={priceFilter}
             onChange={(event) => {
@@ -73,7 +75,7 @@ export default function ProfileCollectionFilters({ filters }) {
                   color="secondary"
                   variant="standard"
                 >
-                  <Search className={classNames(styles["search-icon"])} />
+                  <SearchIcon className={classNames(styles["search-icon"])} />
                 </InputAdornment>
               ),
             }}
