@@ -32,10 +32,8 @@ export default function Activity() {
       console.log();
       if (res.status === 200) {
         const data = await res.json();
-        console.log("Not null");
-        console.log(data.activities);
-
         setActivities(data.activities);
+        setFilters(data.filters);
       }
     }
     if (sortByFilter !== 0 && typeFilter !== 0) {

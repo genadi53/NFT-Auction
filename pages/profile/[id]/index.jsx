@@ -1,4 +1,5 @@
 import { useState, useEffect, Fragment } from "react";
+import { useRouter } from "next/router";
 import Header from "../../../src/components/header/Header";
 import ProfileHero from "../../../src/components/profile/ProfileHero";
 import ProfileUser from "../../../src/components/profile/ProfileUser";
@@ -8,43 +9,85 @@ import dataProfile from "../../../data/profile.json";
 import dataFiltersProfile from "../../../data/filtersProfile.json";
 
 export default function Profile() {
-  const [profile, setProfile] = useState(null);
-  const [filters, setFilters] = useState(null);
+  const [user, setUser] = useState();
+  const [filters, setFilters] = useState();
+  const [sortByFilter, setSortByFilter] = useState();
+  const [priceRangeFilter, setPriceRangeFilter] = useState();
+
+  const router = useRouter();
+  const { id } = router.query;
 
   useEffect(() => {
-    setFilters({ ...dataFiltersProfile });
+    fetchUserData();
 
-    setProfile({
-      image: "images/nft.jpg",
-      name: dataProfile.username,
-      info: "Profile info goes here!",
-      avatar: dataProfile.avatar.url,
-      verified: dataProfile.verified,
-      user: {
-        verified: dataProfile.verified,
-        avatar: dataProfile.avatar.url,
-      },
-      items: [...dataProfile.nfts],
-      filters: filters,
-    });
-  }, []);
+    async function fetchUserData() {
+      const res = await fetch(`${process.env.apiUrl}/users/${id}`);
+      if (res.status === 200) {
+        const data = await res.json();
+        setUser(data.user);
+        setFilters(data.filters);
+      }
+    }
+  }, [id]);
+
+  useEffect(() => {
+    async function fetchExploreData(path) {
+      const res = await fetch(`${process.env.apiUrl}${path}`);
+      if (res.status === 200) {
+        const data = await res.json();
+        console.log(data);
+        setUser(data.user);
+      }
+    }
+    if (sortByFilter !== 0 && priceRangeFilter !== 0) {
+      fetchExploreData(
+        `/users/${id}?sort=${sortByFilter}&price=${priceRangeFilter}`
+      );
+    } else if (sortByFilter !== 0) {
+      fetchExploreData(`/users/${id}?sort=${sortByFilter}`);
+    } else if (priceRangeFilter !== 0) {
+      fetchExploreData(`/users/${id}?price=${priceRangeFilter}`);
+    } else {
+      fetchExploreData(`/users/${id}`);
+    }
+  }, [sortByFilter, priceRangeFilter]);
+
+  // useEffect(() => {
+  //   setFilters({ ...dataFiltersProfile });
+
+  //   setProfile({
+  //     image: "images/nft.jpg",
+  //     name: dataProfile.username,
+  //     info: "Profile info goes here!",
+  //     avatar: dataProfile.avatar.url,
+  //     verified: dataProfile.verified,
+  //     user: {
+  //       verified: dataProfile.verified,
+  //       avatar: dataProfile.avatar.url,
+  //     },
+  //     items: [...dataProfile.nfts],
+  //     filters: filters,
+  //   });
+  // }, []);
 
   return (
     <div>
       <Header />
-      {filters && profile && (
+      {filters && user && (
         <Fragment>
-          <ProfileHero image={profile.image} />
+          <ProfileHero image={user.avatar.backgroundUrl} />
           <ProfileUser
-            name={profile.name}
-            info={profile.info}
-            avatar={profile.avatar}
-            verified={profile.verified}
+            name={user.username}
+            info={user.info}
+            avatar={user.avatar.url}
+            verified={user.verified}
           />
           <ProfileCollection
-            user={profile.user}
+            user={user}
             filters={filters}
-            items={profile.items}
+            items={user.nfts}
+            setSortByFilter={setSortByFilter}
+            setPriceRangeFilter={setPriceRangeFilter}
           />
         </Fragment>
       )}

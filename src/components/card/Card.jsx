@@ -26,7 +26,7 @@ export default function Card({
   currency,
   timeLeft, //= 1000 * 60 * 60 * 24,
 }) {
-  const { avatarUrl, verified } = user;
+  const { avatar, verified } = user;
   const totalPrice = `~${price} ${currency}`;
   return (
     <MaterialCard
@@ -34,7 +34,7 @@ export default function Card({
       className={classNames(styles.card)}
     >
       <CardHeader
-        avatar={<Avatar url={avatarUrl} size={55} verified={verified} />}
+        avatar={<Avatar url={avatar.url} size={55} verified={verified} />}
       ></CardHeader>
       <div className={classNames(styles.cardMedia)}>
         {timeLeft && (
