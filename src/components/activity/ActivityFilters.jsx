@@ -12,7 +12,11 @@ import SearchIcon from "@mui/icons-material/Search";
 import styles from "./ActivityFilters.module.scss";
 import classNames from "classnames";
 
-export default function ActivityFilters({ filters }) {
+export default function ActivityFilters({
+  filters,
+  setSortByFilter,
+  setTypeFilter,
+}) {
   const [sortBy, setSortBy] = useState("");
   const [type, setType] = useState("");
 
@@ -33,7 +37,10 @@ export default function ActivityFilters({ filters }) {
             value={sortBy}
             color={"primary"}
             className={classNames(styles.select)}
-            onChange={(e) => setSortBy(e.target.value)}
+            onChange={(event) => {
+              setSortBy(event.target.value);
+              setSortByFilter(event.target.value);
+            }}
           >
             {filters.sort.map((filter) => {
               return (
@@ -57,7 +64,10 @@ export default function ActivityFilters({ filters }) {
             value={type}
             color={"primary"}
             className={classNames(styles.select)}
-            onChange={(e) => setType(e.target.value)}
+            onChange={(event) => {
+              setType(event.target.value);
+              setTypeFilter(event.target.value);
+            }}
           >
             {filters.type.map((filter) => {
               return (
@@ -82,7 +92,6 @@ export default function ActivityFilters({ filters }) {
                 </InputAdornment>
               ),
               className: styles.search,
-              disableUnderline: true,
             }}
           />
         </FormControl>

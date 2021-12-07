@@ -75,8 +75,8 @@
     left: 5%;
     width: 90%;
     z-index: 1;
-    border-bottom-right-radius: 20px;
-    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
     background: colors.$secondary_main;
     color: colors.$background_default;
     text-align: center;
@@ -92,6 +92,7 @@
 
   .title {
     font-weight: 700;
+    cursor: pointer;
   }
 
   .price {

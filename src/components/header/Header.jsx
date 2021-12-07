@@ -3,6 +3,7 @@ import { Grid, Container, Button, Input, InputAdornment } from "@mui/material";
 import { TextField, OutlinedInput } from "@mui/material";
 import Search from "@mui/icons-material/Search";
 import Logo from "../logo/Logo";
+import Link from "../link/Link";
 import styles from "./Header.module.scss";
 import classNames from "classnames";
 
@@ -30,9 +31,23 @@ export default function Header() {
         </Grid>
 
         <Grid item flexDirection="row" alignSelf="center" flexWrap="wrap">
-          <Button className={classNames(styles.headerButton)}>Home</Button>
-          <Button className={classNames(styles.headerButton)}>Activity</Button>
           <Button
+            href={"/"}
+            component={Link}
+            className={classNames(styles.headerButton)}
+          >
+            Home
+          </Button>
+          <Button
+            href={"/activity"}
+            component={Link}
+            className={classNames(styles.headerButton)}
+          >
+            Activity
+          </Button>
+          <Button
+            href={"/explore"}
+            component={Link}
             variant="contained"
             className={classNames(styles.headerButton)}
           >

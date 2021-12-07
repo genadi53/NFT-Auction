@@ -4,7 +4,13 @@ import { Container, Grid, Typography } from "@mui/material/";
 import ProfileCollectionFilters from "./ProfileCollectionFilters.jsx";
 import Card from "../card/Card.jsx";
 
-export default function ProfileCollection({ user, filters, items = [] }) {
+export default function ProfileCollection({
+  user,
+  filters,
+  items = [],
+  setSortByFilter,
+  setPriceRangeFilter,
+}) {
   return (
     <div className={classNames(styles["profile-collection"])}>
       <Container>
@@ -17,14 +23,12 @@ export default function ProfileCollection({ user, filters, items = [] }) {
           </Grid>
         </Grid>
         <Grid container spacing={2} sx={{ marginTop: "50px" }}>
-          {items.map((item) => {
+          {items.map((item, idx) => {
             return (
-              <Grid item xs={3} key={item.id}>
+              <Grid item xs={3} key={idx}>
                 <Card
-                  user={{
-                    verified: user.verified,
-                    avatarUrl: user.avatar,
-                  }}
+                  id={item.id}
+                  user={user}
                   name={item.name}
                   price={item.price}
                   likes={item.likes}

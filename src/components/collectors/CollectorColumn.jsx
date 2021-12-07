@@ -1,4 +1,4 @@
-import { Container, Grid } from "@mui/material";
+import { Grid } from "@mui/material";
 import Collector from "./Collector";
 import classNames from "classnames";
 import styles from "./CollectorColumn.module.scss";
@@ -11,8 +11,12 @@ export default function CollectorColumn({ items = [] }) {
           return (
             <Collector
               type={(idx + 1) % 2 === 0 ? "light" : ""}
-              {...item}
-              key={`${idx + 1}${item.name}`}
+              key={item.id}
+              name={item.name}
+              avatar={item.avatar}
+              verified={item.verified}
+              nftsCount={item.nftsCount}
+              id={item.id}
             />
           );
         })}

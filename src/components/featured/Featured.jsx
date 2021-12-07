@@ -26,11 +26,17 @@ export default function How({ items = [] }) {
           cols={6}
           rowHeight={180}
         >
-          {items.map((item) => (
+          {items.map((item, idx) => (
             <ImageListItem
-              key={item.image}
-              cols={item.cols || 1}
-              rows={item.rows || 1}
+              // key={item.image}
+              // cols={item.cols || 1}
+              // rows={item.rows || 1}
+              key={item.id}
+              cols={idx === 0 ? 3 : 1}
+              rows={idx === 0 ? 2 : 1}
+              onClick={() => {
+                router.push(`/product/${item.id}`);
+              }}
             >
               <img
                 //src={item.image} //{`${item.image}?w=164&h=164&fit=crop&auto=format`}

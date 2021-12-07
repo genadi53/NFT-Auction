@@ -12,12 +12,14 @@ import {
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import Countdown from "react-countdown";
+import { useRouter } from "next/router";
 import millify from "millify";
 import Avatar from "../avatar/Avatar";
 import styles from "./Card.module.scss";
 import classNames from "classnames";
 
 export default function Card({
+  id,
   name,
   likes = 0,
   mediaUrl,
@@ -26,15 +28,16 @@ export default function Card({
   currency,
   timeLeft, //= 1000 * 60 * 60 * 24,
 }) {
-  const { avatarUrl, verified } = user;
+  const { avatar, verified } = user;
   const totalPrice = `~${price} ${currency}`;
+  const router = useRouter();
   return (
     <MaterialCard
       sx={{ maxWidth: 345, maxHeight: 720 }}
       className={classNames(styles.card)}
     >
       <CardHeader
-        avatar={<Avatar url={avatarUrl} size={55} verified={verified} />}
+        avatar={<Avatar url={avatar.url} size={55} verified={verified} />}
       ></CardHeader>
       <div className={classNames(styles.cardMedia)}>
         {timeLeft && (
@@ -55,18 +58,27 @@ export default function Card({
           className={classNames(styles.media)}
           src={mediaUrl}
           alt="NFT image"
+          onClick={() => {
+            router.push(`/product/${id}`);
+          }}
         />
         {timeLeft && (
           <Countdown
             className={classNames(styles.liveCountdown)}
-            date={Date.now() + timeLeft}
+            date={timeLeft}
           />
         )}
       </div>
       <CardContent className={classNames(styles.cardContent)}>
         <Grid container>
           <Grid item xs={8}>
-            <Typography variant="h5" className={classNames(styles.title)}>
+            <Typography
+              variant="h5"
+              className={classNames(styles.title)}
+              onClick={() => {
+                router.push(`/product/${id}`);
+              }}
+            >
               {name}
             </Typography>
             <Typography variant="body1" className={classNames(styles.price)}>

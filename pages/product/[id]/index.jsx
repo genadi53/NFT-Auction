@@ -7,14 +7,28 @@ import Footer from "../../../src/components/footer/Footer.jsx";
 
 export default function Product() {
   const router = useRouter();
+  const { id } = router.query;
   const [nft, seNft] = useState(null);
 
   useEffect(() => {
-    if (router.isReady) {
-      const { id } = router.query;
-      seNft(dataNfts.find((nft) => nft.id == id));
+    fetchProductData();
+
+    async function fetchProductData() {
+      const res = await fetch(`${process.env.apiUrl}/nfts/${id}`);
+      if (res.status === 200) {
+        const data = await res.json();
+        console.log(data);
+        seNft(data);
+      }
     }
-  }, [router]);
+  }, [id]);
+
+  // useEffect(() => {
+  //   if (router.isReady) {
+  //     const { id } = router.query;
+  //     seNft(dataNfts.find((nft) => nft.id == id));
+  //   }
+  // }, [router]);
 
   const mockBids = [
     {
@@ -43,7 +57,7 @@ export default function Product() {
           details={
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam consectetur, metus lacinia tempus mollis, risus lectus hendrerit ante, non vulputate neque elit quis urna."
           }
-          bids={mockBids}
+          bids={nft.bids}
           source={nft.source}
           isLive={true}
           buyAmount={nft.price + 5}

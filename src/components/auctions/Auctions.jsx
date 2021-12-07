@@ -13,7 +13,7 @@ import classNames from "classnames";
 
 const options = ["Today", "This week", "This month"];
 
-export default function Auctions({ cards = [] }) {
+export default function Auctions({ cards = [], filters = [] }) {
   const [timeOption, setTimeOption] = useState(options[0]);
 
   const handleChange = (event) => {
@@ -48,7 +48,17 @@ export default function Auctions({ cards = [] }) {
           {cards.slice(0, 4).map((card, index) => {
             return (
               <Grid item md={3} sm={6} xs={12} key={index}>
-                <Card {...card} />
+                <Card
+                  key={card.name}
+                  id={card.id}
+                  name={card.name}
+                  likes={card.likes}
+                  price={card.price}
+                  currency={card.currency}
+                  user={card.owner}
+                  mediaUrl={card.mediaUrl}
+                  timeLeft={card.auction_end}
+                ></Card>
               </Grid>
             );
           })}

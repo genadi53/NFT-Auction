@@ -1,4 +1,4 @@
-import { Grid, Container } from "@mui/material";
+import { Grid } from "@mui/material";
 import User from "../user/User";
 import classNames from "classnames";
 import styles from "./Collector.module.scss";
@@ -32,7 +32,7 @@ export default function Collector({
           <User
             name={name}
             info={`${nftsCount} item${nftsCount > 1 ? "s" : ""}`}
-            avatar={avatar}
+            avatar={avatar.url}
             verified={verified}
             size={50}
           />
