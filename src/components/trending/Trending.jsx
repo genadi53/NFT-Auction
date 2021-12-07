@@ -13,8 +13,8 @@ import classNames from "classnames";
 
 const options = ["Today", "This week", "This month"];
 
-export default function Trending({ cards = [] }) {
-  const [timeOption, setTimeOption] = useState(options[0]);
+export default function Trending({ cards = [], filters = [] }) {
+  const [timeOption, setTimeOption] = useState("1");
 
   const handleChange = (event) => {
     setTimeOption(event.target.value);
@@ -36,9 +36,9 @@ export default function Trending({ cards = [] }) {
               onChange={handleChange}
               className={classNames(styles.select)}
             >
-              {options.map((option) => (
-                <MenuItem key={option} value={option}>
-                  {option}
+              {filters.map((option) => (
+                <MenuItem key={option.value} value={option.value}>
+                  {option.label}
                 </MenuItem>
               ))}
             </Select>
@@ -48,7 +48,15 @@ export default function Trending({ cards = [] }) {
           {cards.slice(0, 4).map((card, idx) => {
             return (
               <Grid item md={3} sm={6} xs={12} key={idx}>
-                <Card {...card} />
+                <Card
+                  key={card.name}
+                  name={card.name}
+                  price={card.price}
+                  currency={card.currency}
+                  likes={card.likes}
+                  user={card.owner}
+                  mediaUrl={card.mediaUrl}
+                ></Card>
               </Grid>
             );
           })}

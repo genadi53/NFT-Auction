@@ -23,7 +23,7 @@ const options = ["Today", "This week", "This month"];
 //   return chunk(arrayToChunk, 3);
 // };
 
-export default function TopCollectors({ collectors = [] }) {
+export default function TopCollectors({ collectors = [], filters = [] }) {
   const [timeOption, setTimeOption] = useState(options[0]);
   // const collectorChunks = getArrayToChunks(collectors);
 

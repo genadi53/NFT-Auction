@@ -59,7 +59,7 @@ export default function Card({
         {timeLeft && (
           <Countdown
             className={classNames(styles.liveCountdown)}
-            date={Date.now() + timeLeft}
+            date={timeLeft}
           />
         )}
       </div>
