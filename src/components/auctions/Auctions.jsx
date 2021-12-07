@@ -50,6 +50,7 @@ export default function Auctions({ cards = [], filters = [] }) {
               <Grid item md={3} sm={6} xs={12} key={index}>
                 <Card
                   key={card.name}
+                  id={card.id}
                   name={card.name}
                   likes={card.likes}
                   price={card.price}

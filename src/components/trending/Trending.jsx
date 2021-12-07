@@ -49,6 +49,7 @@ export default function Trending({ cards = [], filters = [] }) {
             return (
               <Grid item md={3} sm={6} xs={12} key={idx}>
                 <Card
+                  id={card.id}
                   key={card.name}
                   name={card.name}
                   price={card.price}

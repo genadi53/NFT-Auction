@@ -101,6 +101,7 @@ export default function Explore() {
               return (
                 <Grid item md={3} sm={6} xs={12} key={idx}>
                   <Card
+                    id={nft.id}
                     name={nft.name}
                     price={nft.price}
                     currency={nft.currency}

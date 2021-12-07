@@ -27,6 +27,7 @@ export default function ProfileCollection({
             return (
               <Grid item xs={3} key={idx}>
                 <Card
+                  id={item.id}
                   user={user}
                   name={item.name}
                   price={item.price}
