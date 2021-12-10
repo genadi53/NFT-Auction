@@ -1,13 +1,11 @@
+import { useState, useEffect } from "react";
 import Header from "../../src/components/header/Header";
 import ExploreTitle from "../../src/components/explore/ExploreTitle";
 import ExploreFilters from "../../src/components/explore/ExploreFilters";
 import Card from "../../src/components/card/Card";
 import { Grid, Container } from "@mui/material";
 import Footer from "../../src/components/footer/Footer";
-import dataFiltersExplore from "../../data/filtersExplore.json";
-import dataNfts from "../../data/nfts.json";
-
-import { useState, useEffect } from "react";
+import { ExploreFiltersContext } from "../../src/context/Contexts";
 
 export default function Explore() {
   const [nfts, setNfts] = useState([]);
@@ -33,12 +31,11 @@ export default function Explore() {
       const res = await fetch(`${process.env.apiUrl}${path}`);
       if (res.status === 200) {
         const data = await res.json();
-        console.log(data.filters);
-        console.log(data.nfts);
         setNfts(data.nfts);
         setFilters(data.filters);
       }
     }
+
     if (sortByFilter !== 0 && priceFilter !== 0) {
       fetchExploreData(`/explore?sort=${sortByFilter}&price=${priceFilter}`);
     } else if (sortByFilter !== 0) {
@@ -49,24 +46,6 @@ export default function Explore() {
       fetchExploreData(`/explore`);
     }
   }, [sortByFilter, priceFilter]);
-
-  // useEffect(() => {
-  //   setFilters(dataFiltersExplore);
-  //   setNfts(
-  //     dataNfts.map((nft) => {
-  //       return {
-  //         name: nft.name,
-  //         likes: nft.likes,
-  //         mediaUrl: nft.source.url,
-  //         user: {
-  //           avatarUrl: nft.owner.avatar.url,
-  //         },
-  //         price: nft.price,
-  //         currency: nft.currency,
-  //       };
-  //     })
-  //   );
-  // }, []);
 
   return (
     <div>
@@ -86,11 +65,11 @@ export default function Explore() {
           </Grid>
           <Grid item xs={9}>
             {filters && (
-              <ExploreFilters
-                filters={filters}
-                setSortByFilter={setSortByFilter}
-                setPriceFilter={setPriceFilter}
-              />
+              <ExploreFiltersContext.Provider
+                value={{ setPriceFilter, setSortByFilter }}
+              >
+                <ExploreFilters filters={filters} />
+              </ExploreFiltersContext.Provider>
             )}
           </Grid>
         </Grid>

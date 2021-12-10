@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { ActivityFiltersContext } from "../../context/Contexts";
 import {
   FormControl,
   InputAdornment,
@@ -12,13 +13,10 @@ import SearchIcon from "@mui/icons-material/Search";
 import styles from "./ActivityFilters.module.scss";
 import classNames from "classnames";
 
-export default function ActivityFilters({
-  filters,
-  setSortByFilter,
-  setTypeFilter,
-}) {
+export default function ActivityFilters({ filters }) {
   const [sortBy, setSortBy] = useState("");
   const [type, setType] = useState("");
+  const { setSortByFilter, setTypeFilter } = useContext(ActivityFiltersContext);
 
   return (
     <div className={classNames(styles["activity-filters"])}>

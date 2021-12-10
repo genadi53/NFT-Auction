@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { ProfileFiltersContext } from "../../context/Contexts";
 import {
   FormControl,
   Select,
@@ -15,6 +16,9 @@ import styles from "./ProfileCollectionFilters.module.scss";
 export default function ProfileCollectionFilters({ filters }) {
   const [sortFilter, setSortFilter] = useState("");
   const [priceFilter, setPriceFilter] = useState("");
+  const { setSortByFilter, setPriceRangeFilter } = useContext(
+    ProfileFiltersContext
+  );
 
   return (
     <div className={classNames(styles["profile-collection-filters"])}>
@@ -32,6 +36,7 @@ export default function ProfileCollectionFilters({ filters }) {
             value={sortFilter}
             onChange={(event) => {
               setSortFilter(event.target.value);
+              setSortByFilter(event.target.value);
             }}
           >
             {filters.sort.map((filter, idx) => {
@@ -51,6 +56,7 @@ export default function ProfileCollectionFilters({ filters }) {
             value={priceFilter}
             onChange={(event) => {
               setPriceFilter(event.target.value);
+              setPriceRangeFilter(event.target.value);
             }}
           >
             {filters.price.map((price, idx) => {

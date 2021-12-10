@@ -4,8 +4,7 @@ import Hero from "../../src/components/hero/Hero";
 import ActivityFilters from "../../src/components/activity/ActivityFilters";
 import ActivityList from "../../src/components/activity/ActivityList";
 import Footer from "../../src/components/footer/Footer";
-import dataActivity from "../../data/activity.json";
-import dataFilters from "../../data/filtersActivity.json";
+import { ActivityFiltersContext } from "../../src/context/Contexts";
 
 export default function Activity() {
   const [activities, setActivities] = useState();
@@ -29,13 +28,13 @@ export default function Activity() {
   useEffect(() => {
     async function fetchActivitiesData(path) {
       const res = await fetch(`${process.env.apiUrl}${path}`);
-      console.log();
       if (res.status === 200) {
         const data = await res.json();
         setActivities(data.activities);
         setFilters(data.filters);
       }
     }
+
     if (sortByFilter !== 0 && typeFilter !== 0) {
       fetchActivitiesData(
         `/activities?sort=${sortByFilter}&type=${typeFilter}`
@@ -47,41 +46,16 @@ export default function Activity() {
     }
   }, [sortByFilter, typeFilter]);
 
-  // useEffect(() => {
-  //   setFilters(dataFilters);
-  //   setActivities(
-  //     dataActivity.map((activity) => {
-  //       return {
-  //         user: {
-  //           username: activity.user.username,
-  //           verified: activity.user.verified,
-  //           avatarUrl: activity.user.avatar.url,
-  //         },
-  //         created_at: activity.created_at,
-  //         nft: {
-  //           name: activity.nft.name,
-  //           owner: {
-  //             username: activity.nft.owner.username,
-  //             avatarUrl: activity.nft.owner.avatar.url,
-  //             verified: activity.nft.owner.confirmed,
-  //           },
-  //         },
-  //         type: activity.type,
-  //       };
-  //     })
-  //   );
-  // }, []);
-
   return (
     <div>
       <Header />
       <Hero text={"Activity"} />
       {filters && (
-        <ActivityFilters
-          filters={filters}
-          setSortByFilter={setSortByFilter}
-          setTypeFilter={setTypeFilter}
-        />
+        <ActivityFiltersContext.Provider
+          value={{ setSortByFilter, setTypeFilter }}
+        >
+          <ActivityFilters filters={filters} />
+        </ActivityFiltersContext.Provider>
       )}
       {activities && <ActivityList items={activities} />}
       <Footer />
