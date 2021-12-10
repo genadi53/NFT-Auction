@@ -1,4 +1,9 @@
 import { useState, useEffect } from "react";
+import {
+  TrendingFiltersContext,
+  CollectorsFiltersContext,
+  ActionsFiltersContext,
+} from "../src/context/Contexts";
 import Header from "../src/components/header/Header";
 import Featured from "../src/components/featured/Featured";
 import Trending from "../src/components/trending/Trending";
@@ -6,10 +11,6 @@ import How from "../src/components/how/How";
 import TopCollectors from "../src/components/collectors/TopCollectors";
 import Auctions from "../src/components/auctions/Auctions";
 import Footer from "../src/components/footer/Footer";
-import dataFeatured from "../data/featured.json";
-import dataTrending from "../data/trending.json";
-import dataUsers from "../data/users.json";
-import dataNfts from "../data/nfts.json";
 
 const howProps = {
   title: "How it works",
@@ -45,9 +46,9 @@ export default function Index() {
   const [collectorFilters, setCollectorFilters] = useState([]);
   const [auctions, setAuctions] = useState([]);
   const [auctionFilters, setAuctionFilters] = useState([]);
-  // const [timePeriod, setTimePeriod] = useState(0);
-  // const [topCollectorsFilter, setTopCollectorsFilter] = useState("");
-  // const [liveAuctionsFilterValue, setLiveAuctionsFilterValue] = useState(0);
+  const [trendingTimePeriod, setTrendingTimePeriod] = useState(0);
+  const [topCollectorsFilter, setTopCollectorsFilter] = useState(0);
+  const [liveAuctionsFilterValue, setLiveAuctionsFilterValue] = useState(0);
 
   useEffect(() => {
     fetchFeaturedData();
@@ -83,122 +84,77 @@ export default function Index() {
     }
   }, []);
 
-  /** REMOVED FILTERS */
+  useEffect(() => {
+    async function fetchTrendingFilteredData(path) {
+      console.log(path);
+      const res = await fetch(`${process.env.apiUrl}${path}`);
+      if (res.status === 200) {
+        const data = await res.json();
+        setTrendingItems(data.nfts);
+      }
+    }
 
-  // useEffect(() => {
-  //   async function fetchTrendingFilteredData(path) {
-  //     const res = await fetch(`${process.env.apiUrl}${path}`);
-  //     if (res.status === 200) {
-  //       const data = await res.json();
-  //       setTrendingItems(data.nfts);
-  //     }
-  //   }
+    if (trendingTimePeriod !== 0) {
+      fetchTrendingFilteredData(`/trending?sort=${trendingTimePeriod}`);
+    }
+  }, [trendingTimePeriod]);
 
-  //   if (timePeriod !== 0) {
-  //     fetchTrendingFilteredData(`/trending?sort=${timePeriod}`);
-  //   }
-  // }, [timePeriod]);
+  useEffect(() => {
+    async function fetchTopCollectorsFilteredData(path) {
+      console.log(path);
+      const res = await fetch(`${process.env.apiUrl}${path}`);
+      if (res.status === 200) {
+        const data = await res.json();
+        setCollectors([...data.users]);
+      }
+    }
 
-  // useEffect(() => {
-  //   async function fetchTopCollectorsFilteredData(path) {
-  //     const res = await fetch(`${process.env.apiUrl}${path}`);
-  //     if (res.status === 200) {
-  //       const data = await res.json();
-  //       setCollectors([...data.users]);
-  //     }
-  //   }
+    if (topCollectorsFilter !== 0) {
+      fetchTopCollectorsFilteredData(
+        `/top-collectors?sort=${topCollectorsFilter}`
+      );
+    }
+  }, [topCollectorsFilter]);
 
-  //   fetchTopCollectorsFilteredData(
-  //     `/top-collectors?sort=${topCollectorsFilter}`
-  //   );
-  // }, [topCollectorsFilter]);
+  useEffect(() => {
+    async function fetchLiveAuctionsFilteredData(path) {
+      console.log(path);
+      const res = await fetch(`${process.env.apiUrl}${path}`);
+      if (res.status === 200) {
+        const data = await res.json();
+        setAuctions(data.nfts);
+      }
+    }
 
-  // useEffect(() => {
-  //   async function fetchLiveAuctionsFilteredData(path) {
-  //     const res = await fetch(`${process.env.apiUrl}${path}`);
-  //     if (res.status === 200) {
-  //       const data = await res.json();
-  //       setAuctions(data.nfts);
-  //       console.log("change");
-  //     }
-  //   }
-
-  //   fetchLiveAuctionsFilteredData(
-  //     `/live-auctions?price=${liveAuctionsFilterValue}`
-  //   );
-  // }, [liveAuctionsFilterValue]);
-
-  /** STATIC DATA  */
-  // const [featuredCards, setFeaturedCards] = useState([]);
-  // const [topCollectors, setTopCollectors] = useState([]);
-  // const [trendingCards, setTrendingCards] = useState([]);
-  // const [liveAuctionCards, setLiveAuctionCards] = useState([]);
-
-  // useEffect(() => {
-  //   const cardsForFeatured = dataFeatured.map((card) => {
-  //     return { image: card.source.url, title: card.name, href: "/about" };
-  //   });
-  //   cardsForFeatured[0] = { ...cardsForFeatured[0], cols: 3, rows: 2 };
-
-  //   const cardsForTrending = dataTrending.map((card) => {
-  //     return {
-  //       mediaUrl: card.source.url,
-  //       name: card.name,
-  //       user: {
-  //         avatarUrl: card.owner.avatar.url,
-  //         verified: card.owner.verified,
-  //       },
-  //       price: card.price,
-  //       currency: card.currency,
-  //     };
-  //   });
-
-  //   const collectors = dataUsers.map((user) => {
-  //     return {
-  //       name: user.username,
-  //       nftsCount: user.nfts.length,
-  //       avatar: user.avatar.url,
-  //       verified: user.verified,
-  //     };
-  //   });
-
-  //   const auctionCards = dataNfts.map((nft) => {
-  //     return {
-  //       name: nft.name,
-  //       user: { avatarUrl: nft.owner.avatar.url, verified: nft.owner.verified },
-  //       mediaUrl: nft.source.url,
-  //       price: nft.price,
-  //       currency: nft.currency,
-  //       timeLeft: Date.parse(nft.auction_end) - Date.parse(nft.published_at),
-  //     };
-  //   });
-
-  //   setLiveAuctionCards(auctionCards);
-  //   setTopCollectors(
-  //     collectors
-  //       .sort((user1, user2) => user1.nfts?.length - user2.nfts?.length)
-  //       .slice(0, 12)
-  //   );
-  //   setFeaturedCards(cardsForFeatured);
-  //   setTrendingCards(cardsForTrending);
-  // }, []);
+    if (liveAuctionsFilterValue !== 0) {
+      fetchLiveAuctionsFilteredData(
+        `/live-auctions?price=${liveAuctionsFilterValue}`
+      );
+    }
+  }, [liveAuctionsFilterValue]);
 
   return (
     <>
       <Header />
       {featuredCards && <Featured items={featuredCards.nfts} />}
       {trendingItems && trendingFilters && (
-        <Trending cards={trendingItems} filters={trendingFilters} />
+        <TrendingFiltersContext.Provider value={{ setTrendingTimePeriod }}>
+          <Trending cards={trendingItems} filters={trendingFilters} />
+        </TrendingFiltersContext.Provider>
       )}
       {collectors && collectorFilters && (
-        <TopCollectors
-          collectors={collectors.slice(0, 12)}
-          filters={collectorFilters}
-        />
+        <CollectorsFiltersContext.Provider value={{ setTopCollectorsFilter }}>
+          <TopCollectors
+            collectors={collectors.slice(0, 12)}
+            filters={collectorFilters}
+          />
+        </CollectorsFiltersContext.Provider>
       )}
       <How {...howProps} />
       {auctions && auctionFilters && (
-        <Auctions cards={auctions} filters={auctionFilters} />
+        <ActionsFiltersContext.Provider value={{ setLiveAuctionsFilterValue }}>
+          <Auctions cards={auctions} filters={auctionFilters} />
+        </ActionsFiltersContext.Provider>
       )}
       <Footer />
     </>

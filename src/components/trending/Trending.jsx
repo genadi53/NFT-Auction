@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { TrendingFiltersContext } from "../../context/Contexts";
 import {
   Container,
   Grid,
@@ -14,10 +15,12 @@ import classNames from "classnames";
 const options = ["Today", "This week", "This month"];
 
 export default function Trending({ cards = [], filters = [] }) {
-  const [timeOption, setTimeOption] = useState("1");
+  const [timeOption, setTimeOption] = useState("");
+  const { setTrendingTimePeriod } = useContext(TrendingFiltersContext);
 
   const handleChange = (event) => {
     setTimeOption(event.target.value);
+    setTrendingTimePeriod(event.target.value);
   };
 
   return (
@@ -32,6 +35,8 @@ export default function Trending({ cards = [], filters = [] }) {
           <h1 className={classNames(styles.title)}>Trending</h1>
           <FormControl sx={{ margin: 1, minWidth: 240 }}>
             <Select
+              id="time-period"
+              label="Time Period"
               value={timeOption}
               onChange={handleChange}
               className={classNames(styles.select)}

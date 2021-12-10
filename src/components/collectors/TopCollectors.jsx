@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { CollectorsFiltersContext } from "../../context/Contexts";
 import {
   Container,
   Grid,
@@ -15,26 +16,28 @@ import classNames from "classnames";
 
 const options = ["Today", "This week", "This month"];
 
-// const getArrayToChunks = (array = []) => {
-//   const arrayToChunk = array.map((element, idx) => ({
-//     ...element,
-//     id: idx + 1,
-//   }));
-//   return chunk(arrayToChunk, 3);
-// };
-
-export default function TopCollectors({ collectors = [], filters = [] }) {
-  const [timeOption, setTimeOption] = useState(options[0]);
-  // const collectorChunks = getArrayToChunks(collectors);
-
-  const res = collectors.map((element, idx) => ({
+const getArrayToChunks = (array = []) => {
+  const arrayToChunk = array.map((element, idx) => ({
     ...element,
     id: idx + 1,
   }));
-  const collectorChunks = _.chunk(res, 3);
+  return chunk(arrayToChunk, 3);
+};
+
+export default function TopCollectors({ collectors = [], filters = [] }) {
+  const [sortBy, setSortBy] = useState("");
+  const { setTopCollectorsFilter } = useContext(CollectorsFiltersContext);
+  const collectorChunks = getArrayToChunks(collectors);
+
+  // const res = collectors.map((element, idx) => ({
+  //   ...element,
+  //   id: idx + 1,
+  // }));
+  // const collectorChunks = _.chunk(res, 3);
 
   const handleChange = (event) => {
-    setTimeOption(event.target.value);
+    setSortBy(event.target.value);
+    setTopCollectorsFilter(event.target.value);
   };
 
   return (
@@ -49,15 +52,18 @@ export default function TopCollectors({ collectors = [], filters = [] }) {
           <h1>Top Collectors</h1>
           <FormControl sx={{ margin: 1, minWidth: 240 }}>
             <Select
-              value={timeOption}
+              label="Sort By"
+              value={sortBy}
               onChange={handleChange}
               className={classNames(styles.select)}
             >
-              {options.map((option) => (
-                <MenuItem key={option} value={option}>
-                  {option}
-                </MenuItem>
-              ))}
+              {filters.map((filter, idx) => {
+                return (
+                  <MenuItem key={filter.value} value={filter.value}>
+                    {filter.label}
+                  </MenuItem>
+                );
+              })}
             </Select>
           </FormControl>
         </Stack>
