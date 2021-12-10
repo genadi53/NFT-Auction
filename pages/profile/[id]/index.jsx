@@ -5,19 +5,19 @@ import ProfileHero from "../../../src/components/profile/ProfileHero";
 import ProfileUser from "../../../src/components/profile/ProfileUser";
 import ProfileCollection from "../../../src/components/profile/ProfileCollection";
 import Footer from "../../../src/components/footer/Footer";
-import dataProfile from "../../../data/profile.json";
-import dataFiltersProfile from "../../../data/filtersProfile.json";
+import { ProfileFiltersContext } from "../../../src/context/Contexts";
 
 export default function Profile() {
   const [user, setUser] = useState();
   const [filters, setFilters] = useState();
-  const [sortByFilter, setSortByFilter] = useState();
-  const [priceRangeFilter, setPriceRangeFilter] = useState();
+  const [sortByFilter, setSortByFilter] = useState(0);
+  const [priceRangeFilter, setPriceRangeFilter] = useState(0);
 
   const router = useRouter();
   const { id } = router.query;
 
   useEffect(() => {
+    if (!id) return;
     fetchUserData();
 
     async function fetchUserData() {
@@ -31,14 +31,15 @@ export default function Profile() {
   }, [id]);
 
   useEffect(() => {
+    if (!id) return;
     async function fetchExploreData(path) {
       const res = await fetch(`${process.env.apiUrl}${path}`);
       if (res.status === 200) {
         const data = await res.json();
-        console.log(data);
         setUser(data.user);
       }
     }
+
     if (sortByFilter !== 0 && priceRangeFilter !== 0) {
       fetchExploreData(
         `/users/${id}?sort=${sortByFilter}&price=${priceRangeFilter}`
@@ -52,24 +53,6 @@ export default function Profile() {
     }
   }, [sortByFilter, priceRangeFilter]);
 
-  // useEffect(() => {
-  //   setFilters({ ...dataFiltersProfile });
-
-  //   setProfile({
-  //     image: "images/nft.jpg",
-  //     name: dataProfile.username,
-  //     info: "Profile info goes here!",
-  //     avatar: dataProfile.avatar.url,
-  //     verified: dataProfile.verified,
-  //     user: {
-  //       verified: dataProfile.verified,
-  //       avatar: dataProfile.avatar.url,
-  //     },
-  //     items: [...dataProfile.nfts],
-  //     filters: filters,
-  //   });
-  // }, []);
-
   return (
     <div>
       <Header />
@@ -82,13 +65,15 @@ export default function Profile() {
             avatar={user.avatar.url}
             verified={user.verified}
           />
-          <ProfileCollection
-            user={user}
-            filters={filters}
-            items={user.nfts}
-            setSortByFilter={setSortByFilter}
-            setPriceRangeFilter={setPriceRangeFilter}
-          />
+          <ProfileFiltersContext.Provider
+            value={{ setSortByFilter, setPriceRangeFilter }}
+          >
+            <ProfileCollection
+              user={user}
+              filters={filters}
+              items={user.nfts}
+            />
+          </ProfileFiltersContext.Provider>
         </Fragment>
       )}
       <Footer />

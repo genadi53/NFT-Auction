@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { ActionsFiltersContext } from "../../context/Contexts";
 import {
   Container,
   Grid,
@@ -11,13 +12,13 @@ import Card from "../card/Card";
 import styles from "./Auctions.module.scss";
 import classNames from "classnames";
 
-const options = ["Today", "This week", "This month"];
-
 export default function Auctions({ cards = [], filters = [] }) {
-  const [timeOption, setTimeOption] = useState(options[0]);
+  const [priceRange, setPriceRange] = useState("");
+  const { setLiveAuctionsFilterValue } = useContext(ActionsFiltersContext);
 
   const handleChange = (event) => {
-    setTimeOption(event.target.value);
+    setPriceRange(event.target.value);
+    setLiveAuctionsFilterValue(event.target.value);
   };
 
   return (
@@ -32,13 +33,14 @@ export default function Auctions({ cards = [], filters = [] }) {
           <h1 className={classNames(styles.title)}>🔥 Live Auctions</h1>
           <FormControl sx={{ margin: 1, minWidth: 240 }}>
             <Select
-              value={timeOption}
+              label="Price Range"
+              value={priceRange}
               onChange={handleChange}
               className={classNames(styles.select)}
             >
-              {options.map((option) => (
-                <MenuItem key={option} value={option}>
-                  {option}
+              {filters.map((filter) => (
+                <MenuItem key={filter.value} value={filter.value}>
+                  {filter.label}
                 </MenuItem>
               ))}
             </Select>
