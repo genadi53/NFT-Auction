@@ -7,8 +7,10 @@ import {
   MenuItem,
   FormControl,
   Stack,
+  Typography,
+  InputLabel,
 } from "@mui/material";
-import _ from "lodash";
+// import _ from "lodash";
 import { chunk } from "lodash";
 import CollectorColumn from "./CollectorColumn";
 import styles from "./TopCollectors.module.scss";
@@ -42,22 +44,24 @@ export default function TopCollectors({ collectors = [], filters = [] }) {
 
   return (
     <div className={classNames(styles.container)}>
-      <Container>
+      <Container disableGutters>
         <Stack
           direction="row"
           justifyContent="space-between"
           alignItems="center"
           spacing={2}
+          sx={{ marginBottom: "1.25rem" }}
         >
-          <h1>Top Collectors</h1>
+          <Typography variant="h2">Top Collectors</Typography>
           <FormControl sx={{ margin: 1, minWidth: 240 }}>
+            <InputLabel id="sort-by-label">Sort by</InputLabel>
             <Select
-              label="Sort By"
+              id="sort-by-label"
               value={sortBy}
               onChange={handleChange}
               className={classNames(styles.select)}
             >
-              {filters.map((filter, idx) => {
+              {filters.map((filter) => {
                 return (
                   <MenuItem key={filter.value} value={filter.value}>
                     {filter.label}
@@ -69,6 +73,9 @@ export default function TopCollectors({ collectors = [], filters = [] }) {
         </Stack>
         <Grid
           container
+          direction="row"
+          justifyContent="space-between"
+          alignItems="center"
           spacing={2}
           className={classNames(styles.CollectorColumns)}
         >

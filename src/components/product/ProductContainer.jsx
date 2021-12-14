@@ -25,7 +25,7 @@ export default function ProductContainer({
 }) {
   return (
     <div className={classNames(styles["product-container"])}>
-      <Container maxWidth="xl">
+      <Container disableGutters maxWidth="xl">
         <Grid container spacing={8}>
           <Grid item xs={6}>
             <ProductImage url={source.url} />

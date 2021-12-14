@@ -6,7 +6,7 @@ import Link from "../link/Link";
 
 export default function How({ title, description, link, items = [] }) {
   return (
-    <Container className={classNames(styles.container)}>
+    <Container disableGutters className={classNames(styles.container)}>
       <div className={classNames(styles.wrapper)}>
         <Grid container justifyContent="space-between">
           <Grid

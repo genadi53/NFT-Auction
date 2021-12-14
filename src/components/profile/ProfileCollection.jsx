@@ -13,7 +13,7 @@ export default function ProfileCollection({
 }) {
   return (
     <div className={classNames(styles["profile-collection"])}>
-      <Container>
+      <Container disableGutters>
         <Grid container sx={{ alignItems: "baseline" }}>
           <Grid item xs={3}>
             <Typography variant={"h3"}>Collection</Typography>

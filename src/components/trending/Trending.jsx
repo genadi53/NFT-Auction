@@ -7,6 +7,8 @@ import {
   MenuItem,
   FormControl,
   Stack,
+  InputLabel,
+  Typography,
 } from "@mui/material";
 import Card from "../card/Card";
 import styles from "./Trending.module.scss";
@@ -25,15 +27,19 @@ export default function Trending({ cards = [], filters = [] }) {
 
   return (
     <div className={classNames(styles.trendingContainer)}>
-      <Container>
+      <Container disableGutters>
         <Stack
           direction="row"
           justifyContent="space-between"
           alignItems="center"
           spacing={2}
+          sx={{ marginBottom: "1.25rem" }}
         >
-          <h1 className={classNames(styles.title)}>Trending</h1>
+          <Typography variant="h2" className={classNames(styles.title)}>
+            Trending
+          </Typography>
           <FormControl sx={{ margin: 1, minWidth: 240 }}>
+            <InputLabel id="time-period">From</InputLabel>
             <Select
               id="time-period"
               label="Time Period"
