@@ -16,7 +16,7 @@ function srcset(image, size, rows = 1, cols = 1) {
 export default function How({ items = [] }) {
   const router = useRouter();
   return (
-    <Container className={classNames(styles.container)}>
+    <Container disableGutters className={classNames(styles.container)}>
       {items && (
         <ImageList
           className={classNames(styles.imageList)}

@@ -7,6 +7,8 @@ import {
   MenuItem,
   FormControl,
   Stack,
+  InputLabel,
+  Typography,
 } from "@mui/material";
 import Card from "../card/Card";
 import styles from "./Auctions.module.scss";
@@ -23,17 +25,21 @@ export default function Auctions({ cards = [], filters = [] }) {
 
   return (
     <div className={classNames(styles.auctionsContainer)}>
-      <Container>
+      <Container disableGutters>
         <Stack
           direction="row"
           justifyContent="space-between"
           alignItems="center"
           spacing={2}
+          sx={{ marginBottom: "1.25rem" }}
         >
-          <h1 className={classNames(styles.title)}>🔥 Live Auctions</h1>
+          <Typography variant="h2" className={classNames(styles.title)}>
+            🔥 Live Auctions
+          </Typography>
           <FormControl sx={{ margin: 1, minWidth: 240 }}>
+            <InputLabel id="price-range-label">Price range</InputLabel>
             <Select
-              label="Price Range"
+              id="price-range-label"
               value={priceRange}
               onChange={handleChange}
               className={classNames(styles.select)}
